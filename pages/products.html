@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2B Industrial Component Catalogue | Kamala Engineering Works</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <style>
+        .products-hero {
+            height: 35vh;
+            background: linear-gradient(135deg, rgba(15,17,21,0.96) 40%, rgba(26,29,34,0.85)), url('../assets/images/gallery-hero-bg.jpg') no-repeat center center / cover;
+            display: table; width: 100%;
+        }
+        .products-hero .container { display: table-cell; vertical-align: middle; }
+
+        /* Filter Console Layout */
+        .filter-control-dashboard {
+            background-color: var(--bg-secondary);
+            padding: 30px; margin-top: -50px; margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.03); box-shadow: 0 20px 45px rgba(0,0,0,0.4);
+        }
+        .catalogue-search-input {
+            width: 100%; background-color: var(--bg-primary); border: 1px solid rgba(255,255,255,0.08);
+            padding: 14px 20px; color: var(--text-main); margin-bottom: 15px; font-size: 0.95rem; box-sizing: border-box;
+        }
+        .filter-matrix-btn {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); color: var(--text-muted);
+            padding: 10px 20px; font-family: var(--font-nav); font-size: 0.75rem; text-transform: uppercase;
+            letter-spacing: 1px; cursor: pointer; display: inline-block; margin-right: 8px; margin-bottom: 8px;
+        }
+        .filter-matrix-btn.active-filter, .filter-matrix-btn:hover {
+            background-color: var(--accent-orange); border-color: var(--accent-orange); color: var(--text-main);
+        }
+
+        /* 3 to 4 Items Per Line Grid Architecture */
+        .catalogue-cards-grid {
+            display: block;
+            width: 100%;
+            font-size: 0; /* Clear inline-block gaps */
+            margin-bottom: 40px;
+        }
+        .product-card-block {
+            display: inline-block;
+            vertical-align: top;
+            width: 25%; /* 4 products in a row by default */
+            padding: 0 12px;
+            margin-bottom: 24px;
+            box-sizing: border-box;
+            font-size: 1rem; /* Reset font scale */
+        }
+        .product-card-inner {
+            background-color: var(--bg-card);
+            border-bottom: 2px solid var(--bg-primary);
+            height: 100%;
+            transition: var(--transition-smooth);
+            display: block;
+            text-decoration: none;
+        }
+        .product-card-inner:hover {
+            transform: translateY(-5px);
+            border-bottom-color: var(--accent-orange);
+        }
+        .product-thumb-container {
+            width: 100%; height: 180px; background-color: var(--bg-primary); overflow: hidden;
+        }
+        .product-thumb-container img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .product-info-wrap { padding: 20px; box-sizing: border-box; }
+        .product-meta-badge {
+            font-family: var(--font-nav); font-size: 0.65rem; text-transform: uppercase;
+            color: var(--accent-orange); background: rgba(255, 107, 0, 0.08);
+            padding: 3px 8px; display: inline-block; margin-bottom: 10px; font-weight: 700;
+        }
+        .product-info-wrap h3 { font-size: 1.1rem; color: var(--text-main); margin: 0 0 8px 0; }
+        .product-info-wrap p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; margin: 0; }
+
+        /* Pagination Controls Layout */
+        .pagination-container { text-align: center; margin: 40px 0 8px 0; }
+        .page-link-btn {
+            display: inline-block; padding: 10px 18px; margin: 0 4px; border: 1px solid rgba(255,255,255,0.08);
+            background: var(--bg-secondary); color: var(--text-main); font-family: var(--font-nav);
+            font-size: 0.8rem; cursor: pointer; text-decoration: none;
+        }
+        .page-link-btn.active-page { background: var(--accent-orange); border-color: var(--accent-orange); }
+
+        .zero-results-message { text-align: center; padding: 40px 20px; background: var(--bg-secondary); display: none; }
+
+        /* Responsive Grid Scaling adjustments */
+        @media (max-width: 1200px) { .product-card-block { width: 33.33%; } } /* 3 per line */
+        @media (max-width: 768px) { .product-card-block { width: 50%; } }    /* 2 per line */
+        @media (max-width: 480px) { .product-card-block { width: 100%; } }   /* 1 per line */
+    </style>
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="container nav-wrapper">
+            <a href="../index.html" class="logo-text">KAMALA<span>ENGINEERING</span></a>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About Profile</a></li>
+                    <li><a href="products.html" class="active">Product Catalogue</a></li>
+                    <li><a href="custom-manufacturing.html">Custom Manufacturing</a></li>
+                    <li><a href="gallery.html">Infrastructure Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cta"><a href="request-quote.html" class="btn btn-nav-quote">Request Quote</a></div>
+        </div>
+    </header>
+
+    <section class="products-hero">
+        <div class="container">
+            <span class="section-subtitle">Heavy Component Inventory Matrix</span>
+            <h1 style="font-size: 3rem; margin: 0;">Component <span>Catalogue</span></h1>
+        </div>
+    </section>
+
+    <section class="catalogue-section" style="padding-top: 80px; padding-bottom: 80px;">
+        <div class="container">
+            
+            <div class="filter-control-dashboard">
+                <input type="text" id="catalog-search-field" class="catalogue-search-input" placeholder="Search components by name or specifications..." onkeyup="resetToFirstPageAndFilter()">
+                <div class="buttons-wrapper-row">
+                    <button class="filter-matrix-btn active-filter" data-filter-type="all" onclick="setCategoryFilter(this)">All Materials</button>
+                    <button class="filter-matrix-btn" data-filter-type="gears" onclick="setCategoryFilter(this)">Gears</button>
+                    <button class="filter-matrix-btn" data-filter-type="shafts" onclick="setCategoryFilter(this)">Shaft Systems</button>
+                    <button class="filter-matrix-btn" data-filter-type="bushes" onclick="setCategoryFilter(this)">Bushes</button>
+                    <button class="filter-matrix-btn" data-filter-type="spareparts" onclick="setCategoryFilter(this)">Spare Parts</button>
+                </div>
+            </div>
+
+            <div id="catalog-empty-state" class="zero-results-message">
+                <h3 style="color:var(--text-main);">No Matching Industrial Assets Identified</h3>
+                <p style="color:var(--text-muted);">Try adjusting your filters or keywords.</p>
+            </div>
+
+            <!-- This Grid Wrapper is Populated Automatically by JSON -->
+            <div class="catalogue-cards-grid" id="catalog-grid-target"></div>
+
+            <!-- Standard Pagination Footprint -->
+            <div class="pagination-container" id="pagination-controls"></div>
+
+        </div>
+    </section>
+
+    <script>
+        let allProducts = [];
+        let filteredProducts = [];
+        let currentFilterCategory = 'all';
+        let currentPage = 1;
+        const itemsPerPage = 12; // Adjust to limit items per view window
+
+        // Fetch Master JSON Document
+        fetch('products.json')
+            .then(response => response.json())
+            .then(data => {
+                allProducts = data;
+                executeEngineFilterPipeline();
+            })
+            .catch(err => console.error("Error loading product catalog matrix data:", err));
+
+        function setCategoryFilter(btnElement) {
+            document.querySelectorAll('.filter-matrix-btn').forEach(b => b.classList.remove('active-filter'));
+            btnElement.classList.add('active-filter');
+            currentFilterCategory = btnElement.getAttribute('data-filter-type') || 'all';
+            resetToFirstPageAndFilter();
+        }
+
+        function resetToFirstPageAndFilter() {
+            currentPage = 1;
+            executeEngineFilterPipeline();
+        }
+
+        function executeEngineFilterPipeline() {
+            const searchStr = document.getElementById('catalog-search-field').value.toLowerCase().trim();
+            
+            filteredProducts = allProducts.filter(item => {
+                const matchesCat = (currentFilterCategory === 'all' || item.category === currentFilterCategory);
+                const matchesSearch = (searchStr === '' || item.title.toLowerCase().includes(searchStr) || item.short_desc.toLowerCase().includes(searchStr));
+                return matchesCat && matchesSearch;
+            });
+
+            renderGridDataMatrix();
+            renderPaginationControls();
+        }
+
+        function renderGridDataMatrix() {
+            const target = document.getElementById('catalog-grid-target');
+            const emptyState = document.getElementById('catalog-empty-state');
+            target.innerHTML = "";
+
+            if (filteredProducts.length === 0) {
+                emptyState.style.display = "block";
+                return;
+            }
+            emptyState.style.display = "none";
+
+            // Splitting logic window indexes
+            const startIdx = (currentPage - 1) * itemsPerPage;
+            const endIdx = startIdx + itemsPerPage;
+            const pageSlice = filteredProducts.slice(startIdx, endIdx);
+
+            pageSlice.forEach(product => {
+                target.innerHTML += `
+                    <div class="product-card-block">
+                        <a href="product-single.html?id=${product.id}" class="product-card-inner">
+                            <div class="product-thumb-container">
+                                <img src="${product.image}" alt="${product.title}">
+                            </div>
+                            <div class="product-info-wrap">
+                                <span class="product-meta-badge">${product.badge}</span>
+                                <h3>${product.title}</h3>
+                                <p>${product.short_desc}</p>
+                            </div>
+                        </a>
+                    </div>
+                `;
+            });
+        }
+
+        function renderPaginationControls() {
+            const container = document.getElementById('pagination-controls');
+            container.innerHTML = "";
+            const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+
+            if (totalPages <= 1) return;
+
+            for (let i = 1; i <= totalPages; i++) {
+                container.innerHTML += `
+                    <button class="page-link-btn ${i === currentPage ? 'active-page' : ''}" onclick="changePage(${i})">${i}</button>
+                `;
+            }
+        }
+
+        function changePage(pageNum) {
+            currentPage = pageNum;
+            renderGridDataMatrix();
+            renderPaginationControls();
+            window.scrollTo({ top: document.querySelector('.catalogue-section').offsetTop - 40, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

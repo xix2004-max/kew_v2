@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>Commercial RFQ Portal & CAD Blueprint Submission Vault | Kamala Engineering Works</title>
+    <meta name="description" content="Securely upload CAD blueprints (STEP, IGES, DWG) and configure technical manufacturing specifications including alloy selection, ISO tolerance matrices, and production volumes via our B2B commercial RFQ gateway.">
+    <meta name="keywords" content="request engineering quote, upload CAD drawings, manufacturing RFQ, heavy machining estimation, Kamala Engineering quote form, B2B procurement portal">
+    <meta name="author" content="Kamala Engineering Works">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.kamalaengineering.com/pages/request-quote.html">
+    <meta property="og:title" content="Commercial RFQ Portal & CAD Blueprint Vault | Kamala Engineering Works">
+    <meta property="og:description" content="Submit technical drawing files, material parameters, and delivery timelines directly to our estimating desk under a strict non-disclosure layer.">
+    <meta property="og:image" content="../assets/images/hero-industrial-fallback.jpg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Oswald:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- External Link to Decoupled Clean Production Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <style>
+        /* Contextual Layout Additions for Commercial RFQ Portal System */
+        .rfq-hero {
+            height: 40vh;
+            background: linear-gradient(135deg, rgba(15,17,21,0.96) 40%, rgba(26,29,34,0.85)), url('../assets/images/hero-industrial-fallback.jpg') no-repeat center center;
+            background-size: cover;
+            display: table;
+            width: 100%;
+            padding: 0;
+        }
+
+        .rfq-hero .container {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .rfq-split-layout {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            margin-top: -50px;
+        }
+
+        .rfq-form-container {
+            display: table-cell;
+            width: 65%;
+            vertical-align: top;
+            background-color: var(--bg-secondary);
+            padding: 55px;
+            border: 1px solid rgba(255,255,255,0.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .rfq-sidebar-panel {
+            display: table-cell;
+            width: 35%;
+            vertical-align: top;
+            padding-left: 50px;
+        }
+
+        /* Technical Form Structural Elements */
+        .form-section-title {
+            font-family: var(--font-nav);
+            font-size: 1.1rem;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: block;
+        }
+
+        .form-row {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            margin-bottom: 20px;
+        }
+
+        .form-col {
+            display: table-cell;
+            padding: 0 12px;
+        }
+
+        .form-row .form-col:first-child { padding-left: 0; }
+        .form-row .form-col:last-child { padding-right: 0; }
+
+        .form-group {
+            display: block;
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: var(--font-nav);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .form-control {
+            width: 100%;
+            background-color: var(--bg-primary);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 15px;
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            box-sizing: border-box;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-orange);
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 107, 0, 0.12);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Specialized CAD Dropzone Vault Elements */
+        .cad-dropzone-box {
+            border: 2px dashed rgba(255, 107, 0, 0.25);
+            background-color: rgba(15, 17, 21, 0.4);
+            padding: 35px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .cad-dropzone-box:hover {
+            border-color: var(--accent-orange);
+            background-color: rgba(255, 107, 0, 0.02);
+        }
+
+        .cad-dropzone-box input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .dropzone-icon {
+            font-size: 2.2rem;
+            color: var(--accent-orange);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .dropzone-text h4 {
+            font-family: var(--font-nav);
+            font-size: 1rem;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .dropzone-text p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .file-list-preview {
+            background: var(--bg-primary);
+            border: 1px solid rgba(255,255,255,0.03);
+            padding: 12px 20px;
+            font-family: var(--font-nav);
+            font-size: 0.8rem;
+            color: #4CAF50;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Sidebar Security Card Elements */
+        .security-audit-card {
+            background-color: var(--bg-card);
+            border-left: 3px solid #4CAF50;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        .security-audit-card h3 {
+            font-family: var(--font-nav);
+            font-size: 1.05rem;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .security-audit-card p {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+
+        .bullet-spec-list {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0 0 0;
+        }
+
+        .bullet-spec-list li {
+            font-size: 0.85rem;
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 15px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .bullet-spec-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+
+        /* Responsive structural adjustments for complex forms */
+        @media (max-width: 1200px) {
+            .rfq-split-layout { display: block; }
+            .rfq-form-container, .rfq-sidebar-panel { display: block; width: 100%; padding: 0; }
+            .rfq-form-container { padding: 40px 25px; }
+            .rfq-sidebar-panel { margin-top: 50px; }
+            .form-row { display: block; }
+            .form-col { display: block; width: 100%; padding: 0; margin-bottom: 20px; }
+            .form-row .form-col:last-child { margin-bottom: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress"></div>
+
+    <!-- Preloader Engine Area -->
+    <div id="preloader">
+        <div class="preloader-center-wrapper">
+            <div class="spinner"></div>
+            <div class="preloader-text">Kamala Engineering Works</div>
+        </div>
+    </div>
+
+    <!-- Modern B2B Navigation Ecosystem Header -->
+    <header id="main-header">
+        <div class="container nav-wrapper">
+            <a href="../index.html" class="logo-text">KAMALA<span>ENGINEERING</span></a>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About Profile</a></li>
+                    <li><a href="products.html">Product Catalogue</a></li>
+                    <li><a href="custom-manufacturing.html">Custom Manufacturing</a></li>
+                    <li><a href="gallery.html">Infrastructure Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cta">
+                <a href="request-quote.html" class="btn btn-nav-quote active">Request Quote</a>
+                <div class="mobile-toggle" id="mobile-menu-trigger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sub-page Compact Architectural Hero Block -->
+    <section class="rfq-hero">
+        <div class="container">
+            <div class="reveal-up">
+                <span class="section-subtitle">Commercial Estimation Portal</span>
+                <h1 style="font-size: 3.5rem; margin-bottom: 0;">Request Commercial <span>RFQ</span></h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deep Commercial Intake Infrastructure Grid -->
+    <section class="rfq-main-section" style="padding-top: 100px;">
+        <div class="container">
+            <div class="rfq-split-layout">
+                
+                <!-- Technical RFQ Intake Form Element -->
+                <div class="rfq-form-container reveal-left">
+                    <form id="commercial-rfq-form" onsubmit="event.preventDefault(); handleFormSubmission();">
+                        
+                        <!-- Block 1: Corporate Credentials -->
+                        <span class="form-section-title">01. Entity Verification Parameters</span>
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="rfq-name">Procurement Officer Name</label>
+                                    <input type="text" id="rfq-name" class="form-control" placeholder="e.g., Amit Sharma" required>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="rfq-company">Corporate Enterprise Legal Title</label>
+                                    <input type="text" id="rfq-company" class="form-control" placeholder="e.g., National Thermal Power Corp" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="rfq-email">Official Corporate Email</label>
+                                    <input type="email" id="rfq-email" class="form-control" placeholder="officer@company.com" required>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="rfq-phone">Direct Desk Telephone / Mobile Line</label>
+                                    <input type="tel" id="rfq-phone" class="form-control" placeholder="+91 XXXXX XXXXX" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Block 2: Technical Specifications Mapping -->
+                        <span class="form-section-title" style="margin-top: 20px;">02. Hardware & Mechanical Metrics</span>
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="rfq-category">Component Core Matrix Classification</label>
+                                    <select id="rfq-category" class="form-control" style="background-color: var(--bg-primary);">
+                                        <option value="gears">Precision Transmission Gears / Module Splines</option>
+                                        <option value="shafts">Stepped Axles / Hardened Cylindrical Shafts</option>
+                                        <option value="bushes">Phosphor Bronze / Gunmetal Sleeves & Bushes</option>
+                                        <option value="weldments">Heavy Structural Weldments / Machine Frame Sub-assemblies</option>
+                                        <option value="spareparts">Reverse Engineered Machine Spare Parts</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="rfq-volume">Total Production Volume / Batch Quantity</label>
+                                    <input type="text" id="rfq-volume" class="form-control" placeholder="e.g., 25 Units / 500 Unit Batch Run" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="rfq-material">Target Material Alloy Profile</label>
+                                    <input type="text" id="rfq-material" class="form-control" placeholder="e.g., EN24, AISI 4140, Phosphor Bronze PB2, Cast Iron Grade 25" required>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="rfq-tolerance">Required Tolerance Bounds Profile</label>
+                                    <input type="text" id="rfq-tolerance" class="form-control" placeholder="e.g., ISO h6, DIN Precision, +/- 0.01mm Micron Bound" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Block 3: CAD Document Vault Upload -->
+                        <span class="form-section-title" style="margin-top: 20px;">03. Secure Engineering Blueprint Vault</span>
+                        <div class="form-group">
+                            <label>Upload Technical Drawings & 3D CAD Geometries</label>
+                            <div class="cad-dropzone-box">
+                                <input type="file" id="rfq-file-input" multiple onchange="updateFilePreviewNotification(this)">
+                                <span class="dropzone-icon">⭱</span>
+                                <div class="dropzone-text">
+                                    <h4>Drag & Drop Engineering Data Files or Browse</h4>
+                                    <p>Supported formats: STEP, STP, IGES, IGS, DWG, DXF, PDF (Max: 120MB per transmission batch)</p>
+                                </div>
+                            </div>
+                            <div id="file-preview-banner" class="file-list-preview"></div>
+                        </div>
+
+                        <!-- Block 4: Scope Details & Logistics -->
+                        <span class="form-section-title" style="margin-top: 20px;">04. Operational Context & Logistics</span>
+                        <div class="form-group">
+                            <label for="rfq-scope">Scope Outline Description & Processing Requirements</label>
+                            <textarea id="rfq-scope" class="form-control" placeholder="Detail any critical post-processing steps (e.g., induction hardening, surface nitriding, zinc plating, ultrasonic material testing or specific packaging rules)..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="rfq-timeline">Required Plant Delivery Target Schedule</label>
+                            <input type="text" id="rfq-timeline" class="form-control" placeholder="e.g., Ex-factory within 45 calendar days post drawing sign-off" required>
+                        </div>
+
+                        <button type="submit" class="btn" style="width: 100%; margin-top: 15px; font-size: 1rem; padding: 18px;">Transmit Specification Array to Estimating Desk</button>
+                    </form>
+                </div>
+
+                <!-- Strategic Security Information Sidebar Panel -->
+                <div class="rfq-sidebar-panel reveal-right">
+                    
+                    <div class="security-audit-card">
+                        <h3>NDA Intellectual Protection Layer</h3>
+                        <p>All transmitted technical blueprints, drawing coordinates, custom geometry configurations, and corporate credentials are encrypted and held under strict contractual Non-Disclosure terms.</p>
+                    </div>
+
+                    <span class="section-subtitle">Estimation Pipeline Metrics</span>
+                    <h3 style="font-family: var(--font-nav); font-size: 1.4rem; color: var(--text-main); margin-bottom: 20px;">Procurement <span>Assurance Logs</span></h3>
+                    <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">Kamala Engineering Works enforces standardized technical evaluation timelines to ensure accuracy across complex cost matrices.</p>
+                    
+                    <ul class="bullet-spec-list">
+                        <li><strong>Fast Evaluation Cycle:</strong> Basic component profiles and standalone standard replacement dimensions are matched against current metal raw-stock pricing curves within 24 to 36 business hours.</li>
+                        <li><strong>Complex Geometry Auditing:</strong> Intricate multi-axis VMC setups or heavy assemblies requiring tailored casting molds require detailed tool-capacity evaluation. Final cost estimation reports are delivered within 3 working days.</li>
+                        <li><strong>Traceable Material Certifications:</strong> Final components ship with full chemical and mechanical testing profiles from accredited testing labs upon request.</li>
+                    </ul>
+
+                    <div style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px;">
+                        <h4 style="font-family: var(--font-nav); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 15px; color: var(--text-main);">Alternative Transmission Channels</h4>
+                        <p style="font-size: 0.85rem; margin-bottom: 10px;">Encountering system transfer limits on complex multi-gigabit master CAD models?</p>
+                        <p style="font-size: 0.85rem;">Forward drawing repository links (OneDrive, Google Drive, Dropbox) directly to: <strong style="color:var(--accent-orange);">tender@kamalaengineering.com</strong></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Comprehensive Premium B2B Footer System Architecture -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4 class="footer-logo">KAMALA<span>ENGINEERING</span></h4>
+                <p>Premium dark-tier heavy enterprise tier manufacturing specialists. Producing mission critical mechanical hardware configurations across high-load processing plants globally with zero precision compromises.</p>
+                <p class="footer-highlight">ISO 9001:2015 Structural Manufacturing Certified Plant Facility</p>
+            </div>
+            <div class="footer-col">
+                <h4>Component Matrices</h4>
+                <ul class="footer-links">
+                    <li><a href="products.html">Machine Spare Parts</a></li>
+                    <li><a href="products.html">Industrial Shaft Systems</a></li>
+                    <li><a href="products.html">Precision Transmission Gears</a></li>
+                    <li><a href="products.html">Bronze Sleeves & Bushes</a></li>
+                    <li><a href="products.html">Heavy Structural Weldments</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Site Structure</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Corporate Profile</a></li>
+                    <li><a href="custom-manufacturing.html">Machinery Capability Mapping</a></li>
+                    <li><a href="gallery.html">Infrastructure Vault</a></li>
+                    <li><a href="request-quote.html">Submit Design RFQ</a></li>
+                    <li><a href="contact.html">Contact Engineering Office</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Registered Plant Office</h4>
+                <ul class="contact-info-list">
+                    <li>
+                        <span>📌</span>
+                        <div><strong>Factory Floor Premises:</strong> Industrial Manufacturing Zone, Phase II, Tool-Room Hub, Kolkata, West Bengal, Pin 700001, India</div>
+                    </li>
+                    <li>
+                        <span>📞</span>
+                        <div><strong>Procurement Hotline:</strong> +91-XXXXXXXXXX / +91-XXXXXXXXXX</div>
+                    </li>
+                    <li>
+                        <span>📧</span>
+                        <div><strong>Secure B2B Inquiries:</strong> tender@kamalaengineering.com / sales@kamalaengineering.com</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© 2026 Kamala Engineering Works. All Engineering Blueprints and Hardware Layout Property Protected. Handcrafted with zero external UI framework dependencies.</p>
+            <div class="legal-links">
+                <a href="privacy-policy.html">Data Security & NDA Privacy Policy</a>
+                <a href="privacy-policy.html">Terms of Manufacturing Specification Agreements</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Frontend Interactive Form Mechanics Logic Asset -->
+    <script>
+        function updateFilePreviewNotification(inputElement) {
+            const displayBanner = document.getElementById('file-preview-banner');
+            if (!displayBanner) return;
+
+            const selectedFilesCount = inputElement.files.length;
+            if (selectedFilesCount > 0) {
+                let fileNamesSummary = [];
+                for (let i = 0; i < Math.min(selectedFilesCount, 3); i++) {
+                    fileNamesSummary.push(inputElement.files[i].name);
+                }
+                
+                let parsingText = `✓ Engineering Data Pack Staged: ${selectedFilesCount} file(s) ready [${fileNamesSummary.join(', ')}${selectedFilesCount > 3 ? '...' : ''}]`;
+                displayBanner.innerText = parsingText;
+                displayBanner.style.display = 'block';
+            } else {
+                displayBanner.style.display = 'none';
+            }
+        }
+
+        function handleFormSubmission() {
+            const clientCompany = document.getElementById('rfq-company').value || "Enterprise Partner";
+            const targetCategory = document.getElementById('rfq-category').value;
+            
+            alert(
+                `KAMALA VAULT SECURITY PROTOCOL:\n\n` +
+                `Thank you, Your manufacturing parameters for [${targetCategory.toUpperCase()}] have been parsed into our secure vault under active NDA security settings.\n\n` +
+                `Our commercial estimating department will review your geometry requirements and allocate raw metallurgical components. Your confirmation track ID has been generated inside our plant database logs.`
+            );
+            
+            document.getElementById('commercial-rfq-form').reset();
+            const displayBanner = document.getElementById('file-preview-banner');
+            if (displayBanner) displayBanner.style.display = 'none';
+        }
+    </script>
+
+    <!-- External Link to Decoupled Production Script Logic -->
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

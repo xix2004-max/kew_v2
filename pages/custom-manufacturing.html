@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>Machinery Plant Capabilities & Custom Manufacturing | Kamala Engineering Works</title>
+    <meta name="description" content="Explore our precise engineering limits, tooling capabilities, and infrastructure capacity. Featuring multi-axis CNC machines, heavy VMC systems, gear hobbers, and custom lathe setups for handling complex industrial components.">
+    <meta name="keywords" content="machining capabilities, CNC machine shop capacity, VMC tooling footprint, heavy gear hobbing diameter, custom metal turning limits, industrial contract manufacturing">
+    <meta name="author" content="Kamala Engineering Works">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.kamalaengineering.com/pages/custom-manufacturing.html">
+    <meta property="og:title" content="Machinery Plant Capabilities & Custom Manufacturing | Kamala Engineering Works">
+    <meta property="og:description" content="Review structural technical limits, maximum turning diameters, milling travel limits, and metallurgical capabilities for heavy B2B production line requirements.">
+    <meta property="og:image" content="../assets/images/hero-industrial-fallback.jpg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Oswald:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- External Link to Decoupled Clean Production Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <style>
+        /* Contextual Layout Additions for Infrastructure Plant Capabilities Page */
+        .capabilities-hero {
+            height: 45vh;
+            background: linear-gradient(135deg, rgba(15,17,21,0.96) 45%, rgba(26,29,34,0.85)), url('../assets/images/contact-hero-bg.jpg') no-repeat center center;
+            background-size: cover;
+            display: table;
+            width: 100%;
+            padding: 0;
+        }
+
+        .capabilities-hero .container {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        /* Technical Capacity Parameter Grid Blocks */
+        .machinery-showcase-grid {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: separate;
+            border-spacing: 0 40px;
+            margin-top: -20px;
+        }
+
+        .machinery-row {
+            display: table-row;
+        }
+
+        .machinery-cell-media {
+            display: table-cell;
+            width: 45%;
+            vertical-align: middle;
+            background-color: var(--bg-card);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .machinery-cell-media img {
+            width: 100%;
+            height: 100%;
+            min-height: 320px;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition-smooth);
+        }
+
+        .machinery-row:hover .machinery-cell-media img {
+            transform: scale(1.04);
+        }
+
+        .machinery-cell-specs {
+            display: table-cell;
+            width: 55%;
+            vertical-align: middle;
+            background-color: var(--bg-secondary);
+            padding: 50px;
+            box-sizing: border-box;
+            border: 1px solid rgba(255,255,255,0.01);
+        }
+
+        .machinery-row:nth-child(even) .machinery-cell-media { order: 2; }
+        .machinery-row:nth-child(even) .machinery-cell-specs { order: 1; }
+
+        .machinery-tag {
+            font-family: var(--font-nav);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--accent-orange);
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .machinery-cell-specs h3 {
+            font-size: 1.7rem;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+
+        /* Spec Metric Mini-Table System */
+        .tech-spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+
+        .tech-spec-table tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .tech-spec-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .tech-spec-table td {
+            padding: 12px 0;
+            font-size: 0.9rem;
+        }
+
+        .tech-spec-table td.spec-label {
+            font-family: var(--font-nav);
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 0.5px;
+            width: 40%;
+        }
+
+        .tech-spec-table td.spec-value {
+            font-family: var(--font-body);
+            color: var(--text-main);
+            font-weight: 600;
+            width: 60%;
+        }
+
+        /* Engineering Processes Section Styles */
+        .process-flow-container {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            margin-top: 50px;
+        }
+
+        .process-step-node {
+            display: table-cell;
+            background-color: var(--bg-card);
+            padding: 40px 30px;
+            border-top: 2px solid rgba(255,255,255,0.03);
+            text-align: left;
+            position: relative;
+            vertical-align: top;
+            transition: var(--transition-smooth);
+        }
+
+        .process-step-node:hover {
+            border-top-color: var(--accent-orange);
+            background-color: rgba(255, 107, 0, 0.01);
+        }
+
+        .process-step-node:not(:last-child) {
+            border-right: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .step-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: rgba(255, 107, 0, 0.15);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .process-step-node h4 {
+            font-family: var(--font-nav);
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .process-step-node p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Responsive Breakpoints for Structural Plant Tables */
+        @media (max-width: 1024px) {
+            .machinery-showcase-grid, .machinery-row { display: block; width: 100%; }
+            .machinery-cell-media, .machinery-cell-specs { display: block; width: 100% !important; }
+            .machinery-cell-media img { min-height: 250px; max-height: 350px; }
+            .process-flow-container { display: block; }
+            .process-step-node { display: block; width: 100%; border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.03); margin-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress"></div>
+
+    <!-- Preloader Engine Area -->
+    <div id="preloader">
+        <div class="preloader-center-wrapper">
+            <div class="spinner"></div>
+            <div class="preloader-text">Kamala Engineering Works</div>
+        </div>
+    </div>
+
+    <!-- Modern B2B Navigation Ecosystem Header -->
+    <header id="main-header">
+        <div class="container nav-wrapper">
+            <a href="../index.html" class="logo-text">KAMALA<span>ENGINEERING</span></a>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About Profile</a></li>
+                    <li><a href="products.html">Product Catalogue</a></li>
+                    <li><a href="custom-manufacturing.html" class="active">Custom Manufacturing</a></li>
+                    <li><a href="gallery.html">Infrastructure Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cta">
+                <a href="request-quote.html" class="btn btn-nav-quote">Request Quote</a>
+                <div class="mobile-toggle" id="mobile-menu-trigger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sub-page Compact Architectural Hero Block -->
+    <section class="capabilities-hero">
+        <div class="container">
+            <div class="reveal-up">
+                <span class="section-subtitle">Plant Machinery Parameters</span>
+                <h1 style="font-size: 3.5rem; margin-bottom: 0;">Production <span>Capabilities</span></h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 1: Detailed Overview of Shop Floor Limits -->
+    <section class="intro-capabilities-section">
+        <div class="container" style="max-width: 900px; text-align: center;">
+            <div class="reveal-up">
+                <span class="section-subtitle">Precision Bounds Portfolio</span>
+                <h2 class="section-title">Heavy Engineering <span>Capacity Mapping</span></h2>
+                <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 30px;">Our machine shop floor operations rely on standardized structural configurations. We avoid general light-duty commercial equipment in favor of rigid, high-mass platforms engineered to hold precise tolerances over continuous production cycles.</p>
+                <p>Review our explicit dimensional capacities, physical travel limits, and sizing boundaries across our core tooling segments below before planning procurement setups or dispatching CAD models to our engineering desk.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Core Tool Footprint & Sizing Grid Matrix -->
+    <section class="machinery-matrix-section" style="background-color: var(--bg-primary); padding-top: 0;">
+        <div class="container">
+            <div class="machinery-showcase-grid">
+
+                <!-- Asset Entry 01: Multi-Axis Vertical Machining Centers (VMC) -->
+                <div class="machinery-row reveal-up">
+                    <div class="machinery-cell-media">
+                        <img src="../assets/images/gallery/machinery-cnc-vmc.jpg" alt="High precision multi axis Vertical Machining Center cell operating on alloy raw stock">
+                    </div>
+                    <div class="machinery-cell-specs">
+                        <span class="machinery-tag">Milling & Profiling Cell</span>
+                        <h3>Precision CNC / VMC Infrastructures</h3>
+                        <p>Optimized for multi-faceted automated milling, drilling, profiling, and complex geometric pocket configurations across raw steel forgings or heavy metallic slabs.</p>
+                        <table class="tech-spec-table">
+                            <tr>
+                                <td class="spec-label">X-Axis Linear Travel</td>
+                                <td class="spec-value">Up to 1,200 mm Maximum Stroke</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Y-Axis Cross Travel</td>
+                                <td class="spec-value">Up to 750 mm Bed Breadth</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Z-Axis Vertical Clearance</td>
+                                <td class="spec-value">600 mm Tool Nose to Table Separation</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Geometric Accuracy</td>
+                                <td class="spec-value">Positional Repeatability within ±0.005 mm (5 Microns)</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Asset Entry 02: Heavy-Duty Industrial Lathes -->
+                <div class="machinery-row reveal-up">
+                    <div class="machinery-cell-specs" style="order: 1;">
+                        <span class="machinery-tag">Turning & Boring Line</span>
+                        <h3>Heavy Heavy-Duty Planer & Turning Lathes</h3>
+                        <p>Engineered to handle extra-long driveshafts, heavy marine components, stepped axles, and broad flanged hubs with structural stability under heavy metal-removal feeds.</p>
+                        <table class="tech-spec-table">
+                            <tr>
+                                <td class="spec-label">Max Swing Over Bed</td>
+                                <td class="spec-value">Ø 900 mm Maximum Turning Diameter Limit</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Max Swing Over Carriage</td>
+                                <td class="spec-value">Ø 550 mm Cross-Slide Clearance Width</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Distance Between Centers</td>
+                                <td class="spec-value">Up to 4,000 mm Maximum Bed Placement Length</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Spindle Bore Capacity</td>
+                                <td class="spec-value">Ø 120 mm Through-Hole Clearance Diameter</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="machinery-cell-media" style="order: 2;">
+                        <img src="../assets/images/gallery/component-shafts-forged.jpg" alt="Heavy industrial lathe system managing forged steel shaft profiles">
+                    </div>
+                </div>
+
+                <!-- Asset Entry 03: Specialized Gear Hobbing & Shaping Units -->
+                <div class="machinery-row reveal-up">
+                    <div class="machinery-cell-media">
+                        <img src="../assets/images/gallery/machinery-gear-hobber.jpg" alt="Heavy vertical gear hobbing machinery generating high module spline cuts">
+                    </div>
+                    <div class="machinery-cell-specs">
+                        <span class="machinery-tag">Transmission Splines Cell</span>
+                        <h3>Heavy Modular Gear Hobbing Machinery</h3>
+                        <p>Dedicated processing rigs for cutting internal and external splines, high-stress spur gear designs, helical tooth structures, and custom heavy-load drive sprockets.</p>
+                        <table class="tech-spec-table">
+                            <tr>
+                                <td class="spec-label">Maximum Diameter Capacity</td>
+                                <td class="spec-value">Ø 1,500 mm Pitch Diameter Outer Bound</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Maximum Module Limit</td>
+                                <td class="spec-value">Up to 12 Module Thickness Profile Generation</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Gear Tooth Execution Profile</td>
+                                <td class="spec-value">Spur, Helical, Straight Internal Splines, Chain Sprockets</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Standard Quality Grading</td>
+                                <td class="spec-value">Conforming to DIN 7 / AGMA Class 9 Standards</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Value Chain & Engineering Process Flow -->
+    <section class="process-flow-section" style="background-color: var(--bg-secondary);">
+        <div class="container">
+            <div style="text-align: center; max-width: 700px; margin: 0 auto 40px auto;" class="reveal-up">
+                <span class="section-subtitle">Operational Protocols</span>
+                <h2 class="section-title">The Engineering <span>Workflow</span></h2>
+                <p>How we systematically transform raw metallurgical stock into certified, deployment-ready industrial components.</p>
+            </div>
+
+            <div class="process-flow-container reveal-up">
+                
+                <div class="process-step-node">
+                    <span class="step-number">01</span>
+                    <h4>Drawing & NDA Review</h4>
+                    <p>We analyze incoming STEP/DWG blueprints, verify targeted dimensional values against standard machine limits, and initiate strict data protection protocols.</p>
+                </div>
+
+                <div class="process-step-node">
+                    <span class="step-number">02</span>
+                    <h4>Material Verification</h4>
+                    <p>Raw alloys undergo chemical verification before machining to confirm structural integrity and grade authenticity prior to entering the production floor.</p>
+                </div>
+
+                <div class="process-step-node">
+                    <span class="step-number">03</span>
+                    <h4>Multi-Pass Processing</h4>
+                    <p>Components undergo structured roughing cuts followed by precise finishing passes to prevent internal stress build-up and manage critical micro-tolerances.</p>
+                </div>
+
+                <div class="process-step-node">
+                    <span class="step-number">04</span>
+                    <h4>Metrology & Shipping</h4>
+                    <p>Final components undergo rigorous geometric inspection via calibrated instruments, tracking concentricity, run-out, and surface roughness before dispatch.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action B2B Client Procurement RFQ Conversion Module -->
+    <section class="cta-section" style="padding: 0;">
+        <div class="cta-banner">
+            <div class="container reveal-up">
+                <h2>Have Custom Dimensional Requirements?</h2>
+                <p>Let's map your exact geometric tolerance configurations against our active tooling matrix for custom project runs.</p>
+                <div class="cta-button-group">
+                    <a href="request-quote.html" class="btn">Initiate Technical RFQ</a>
+                    <a href="contact.html" class="btn btn-secondary">Contact Engineering Office</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comprehensive Premium B2B Footer System Architecture -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4 class="footer-logo">KAMALA<span>ENGINEERING</span></h4>
+                <p>Premium dark-tier heavy enterprise tier manufacturing specialists. Producing mission critical mechanical hardware configurations across high-load processing plants globally with zero precision compromises.</p>
+                <p class="footer-highlight">ISO 9001:2015 Structural Manufacturing Certified Plant Facility</p>
+            </div>
+            <div class="footer-col">
+                <h4>Component Matrices</h4>
+                <ul class="footer-links">
+                    <li><a href="products.html">Machine Spare Parts</a></li>
+                    <li><a href="products.html">Industrial Shaft Systems</a></li>
+                    <li><a href="products.html">Precision Transmission Gears</a></li>
+                    <li><a href="products.html">Bronze Sleeves & Bushes</a></li>
+                    <li><a href="products.html">Heavy Structural Weldments</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Site Structure</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Corporate Profile</a></li>
+                    <li><a href="custom-manufacturing.html">Machinery Capability Mapping</a></li>
+                    <li><a href="gallery.html">Infrastructure Vault</a></li>
+                    <li><a href="request-quote.html">Submit Design RFQ</a></li>
+                    <li><a href="contact.html">Contact Engineering Office</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Registered Plant Office</h4>
+                <ul class="contact-info-list">
+                    <li>
+                        <span>📌</span>
+                        <div><strong>Factory Floor Premises:</strong> Industrial Manufacturing Zone, Phase II, Tool-Room Hub, Kolkata, West Bengal, Pin 700001, India</div>
+                    </li>
+                    <li>
+                        <span>📞</span>
+                        <div><strong>Procurement Hotline:</strong> +91-XXXXXXXXXX / +91-XXXXXXXXXX</div>
+                    </li>
+                    <li>
+                        <span>📧</span>
+                        <div><strong>Secure B2B Inquiries:</strong> tender@kamalaengineering.com / sales@kamalaengineering.com</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© 2026 Kamala Engineering Works. All Engineering Blueprints and Hardware Layout Property Protected. Handcrafted with zero external UI framework dependencies.</p>
+            <div class="legal-links">
+                <a href="privacy-policy.html">Data Security & NDA Privacy Policy</a>
+                <a href="privacy-policy.html">Terms of Manufacturing Specification Agreements</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External Link to Decoupled Production Script Logic -->
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

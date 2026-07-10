@@ -1,0 +1,1140 @@
+/* ==========================================================================
+   KAMALA ENGINEERING WORKS - PRODUCTION CSS STYLESHEET (FIXED)
+   Architecture: Zero-Framework Premium B2B Industrial Minimalist Layout
+   ========================================================================== */
+
+:root {
+    --bg-primary: #0F1115;
+    --bg-secondary: #1A1D22;
+    --bg-card: #15181D;
+    --accent-orange: #FF6B00;
+    --accent-glow: rgba(255, 107, 0, 0.45);
+    --text-main: #FFFFFF;
+    --text-muted: #B8B8B8;
+    --font-display: 'Oswald', sans-serif;
+    --font-nav: 'Montserrat', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* 1. Global Resets & Base Configuration
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Correctly encapsulated within the html root element */
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Scroll Progress Indicator Bar */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-orange), #FF9E53);
+    width: 0%;
+    z-index: 10000;
+    transition: width 0.1s linear;
+}
+
+/* 2. Loading Screen Preloader Engine Styles
+   ========================================================================== */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-primary);
+    z-index: 9999;
+    display: table;
+}
+
+#preloader .preloader-center-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid var(--bg-secondary);
+    border-top: 4px solid var(--accent-orange);
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+    animation: spin 1s cubic-bezier(0.5, 0.1, 0.5, 0.9) infinite;
+}
+
+.preloader-text {
+    margin-top: 20px;
+    font-family: var(--font-display);
+    letter-spacing: 3px;
+    color: var(--text-main);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 3. Utility Layout Structural Components
+   ========================================================================== */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+section {
+    padding: 120px 0;
+    position: relative;
+    display: block;
+}
+
+/* Typography Templates */
+h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section-subtitle {
+    color: var(--accent-orange);
+    font-family: var(--font-nav);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    display: block;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.section-title span {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+}
+
+p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* Premium Resilient Buttons Layer */
+.btn {
+    display: inline-block;
+    padding: 16px 36px;
+    font-family: var(--font-nav);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-main);
+    background-color: var(--accent-orange);
+    border: 2px solid var(--accent-orange);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    z-index: 1;
+    text-align: center;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:hover {
+    box-shadow: 0 0 25px var(--accent-glow);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent-orange);
+    background-color: transparent;
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.2);
+}
+
+/* 4. Navigation Ecosystem Header Layout
+   ========================================================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5000;
+    transition: var(--transition-smooth);
+    padding: 25px 0;
+    background-color: transparent;
+}
+
+header.sticky {
+    padding: 15px 0;
+    background-color: rgba(15, 17, 21, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.nav-wrapper {
+    display: table;
+    width: 100%;
+}
+
+.logo-text {
+    display: table-cell;
+    vertical-align: middle;
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-main);
+    text-decoration: none;
+    letter-spacing: 1px;
+    width: 25%;
+}
+
+.logo-text span {
+    color: var(--accent-orange);
+}
+
+nav {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 55%;
+}
+
+nav ul {
+    list-style: none;
+    display: inline-block;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 18px;
+}
+
+nav ul li a {
+    font-family: var(--font-nav);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    position: relative;
+    padding: 8px 0;
+    display: block;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: var(--text-main);
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-orange);
+    transition: var(--transition-smooth);
+}
+
+nav ul li a:hover::after, nav ul li a.active::after {
+    width: 100%;
+}
+
+.nav-cta {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+    width: 20%;
+}
+
+.btn-nav-quote {
+    padding: 12px 24px;
+    font-size: 0.8rem;
+}
+
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.mobile-toggle span {
+    width: 30px;
+    height: 2px;
+    background-color: var(--text-main);
+    transition: var(--transition-smooth);
+}
+
+/* 5. Hero Component Layout Array
+   ========================================================================== */
+.hero-section {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    display: table;
+    width: 100%;
+}
+
+.video-fallback-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(15,17,21,0.95) 40%, rgba(26,29,34,0.7));
+    z-index: 2;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0.25;
+}
+
+.hero-section .container {
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    z-index: 3;
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    line-height: 1.05;
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+}
+
+.hero-content h1 span {
+    color: var(--accent-orange);
+}
+
+.hero-content p {
+    font-size: 1.15rem;
+    margin-bottom: 45px;
+    max-width: 650px;
+}
+
+.hero-button-group {
+    display: block;
+}
+
+.hero-button-group .btn {
+    margin-right: 20px;
+    vertical-align: middle;
+}
+
+/* 6. Industrial Counter Metrics Strip
+   ========================================================================== */
+.stats-strip {
+    background-color: var(--bg-secondary);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 50px 0;
+    position: relative;
+    z-index: 10;
+    display: block;
+}
+
+.stats-grid {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.stat-item {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.stat-item h3 {
+    font-size: 3.5rem;
+    color: var(--accent-orange);
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.stat-item p {
+    font-family: var(--font-nav);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-main);
+}
+
+/* 7. Corporate Profile Section (About Split Layout)
+   ========================================================================== */
+.about-split {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.about-split > div {
+    display: table-cell;
+    vertical-align: middle;
+    width: 50%;
+}
+
+.about-split > div:first-child {
+    padding-right: 40px;
+}
+
+.about-split > div:last-child {
+    padding-left: 40px;
+}
+
+.about-image-wrapper {
+    position: relative;
+}
+
+.about-image-main {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-left: 4px solid var(--accent-orange);
+    display: block;
+    background-color: #222;
+}
+
+.about-experience-badge {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    background-color: var(--accent-orange);
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.about-experience-badge .years {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    display: block;
+}
+
+.about-experience-badge .lbl {
+    font-family: var(--font-nav);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* 8. Why Choose Us Component Layout
+   ========================================================================== */
+.wcu-section {
+    background-color: var(--bg-secondary);
+}
+
+.wcu-header-block {
+    text-align: center; 
+    max-width: 700px; 
+    margin: 0 auto 60px auto;
+}
+
+.wcu-grid {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 30px 0;
+    margin-left: -30px;
+    margin-right: -30px;
+}
+
+.wcu-card {
+    display: table-cell;
+    background-color: var(--bg-card);
+    padding: 50px 40px;
+    border: 1px solid rgba(255,255,255,0.02);
+    transition: var(--transition-smooth);
+    vertical-align: top;
+}
+
+.wcu-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(255, 107, 0, 0.3);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+.wcu-icon {
+    font-size: 2.5rem;
+    color: var(--accent-orange);
+    margin-bottom: 25px;
+    display: block;
+    font-weight: 700;
+    font-family: var(--font-display);
+}
+
+.wcu-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+/* 9. Product Grid Showcase Design
+   ========================================================================== */
+.products-header-wrapper {
+    display: table;
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.products-header-wrapper > div {
+    display: table-cell;
+    vertical-align: bottom;
+}
+
+.products-header-wrapper > .btn {
+    display: table-cell;
+    vertical-align: bottom;
+    text-align: right;
+    width: auto;
+}
+
+.product-grid-home {
+    display: block;
+    font-size: 0;
+}
+
+.product-cat-card {
+    display: inline-block;
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    background-color: var(--bg-secondary);
+    border-bottom: 3px solid transparent;
+    transition: var(--transition-smooth);
+    width: calc(33.333% - 20px);
+    margin: 10px;
+    vertical-align: top;
+}
+
+.product-cat-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+    transition: var(--transition-smooth);
+}
+
+.product-cat-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px;
+    background: linear-gradient(to top, rgba(15,17,21,1) 0%, rgba(15,17,21,0.4) 60%, transparent 100%);
+    box-sizing: border-box;
+    transition: var(--transition-smooth);
+}
+
+.product-cat-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.product-cat-card p {
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: var(--transition-smooth);
+}
+
+.product-cat-card:hover {
+    border-color: var(--accent-orange);
+}
+
+.product-cat-card:hover .product-cat-img {
+    transform: scale(1.08);
+    opacity: 0.5;
+}
+
+.product-cat-card:hover .product-cat-overlay {
+    background: linear-gradient(to top, rgba(15,17,21,1) 0%, rgba(15,17,21,0.7) 100%);
+}
+
+.product-cat-card:hover p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 10. Plant Capabilities & Workshop Architecture Styles
+   ========================================================================== */
+.mfg-section {
+    background-color: var(--bg-secondary);
+}
+
+.mfg-split {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.mfg-split > div:first-child {
+    display: table-cell;
+    vertical-align: middle;
+    width: 40%;
+    padding-right: 40px;
+}
+
+.mfg-split > div:last-child {
+    display: table-cell;
+    vertical-align: middle;
+    width: 60%;
+    padding-left: 40px;
+}
+
+.mfg-capabilities-list {
+    display: block;
+}
+
+.mfg-capability-item {
+    background-color: var(--bg-card);
+    padding: 25px 35px;
+    display: table;
+    width: 100%;
+    border-left: 3px solid rgba(255,255,255,0.1);
+    transition: var(--transition-smooth);
+    text-decoration: none;
+    color: var(--text-main);
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+.mfg-capability-item h4 {
+    display: table-cell;
+    vertical-align: middle;
+    font-family: var(--font-nav);
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.mfg-capability-item .arrow {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+    color: var(--accent-orange);
+    font-weight: 700;
+    transition: var(--transition-smooth);
+}
+
+.mfg-capability-item:hover {
+    border-left-color: var(--accent-orange);
+    background-color: #1e2229;
+    transform: translateX(10px);
+}
+
+.mfg-capability-item:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* 11. Core Industrial Sectors Layout Matrix
+   ========================================================================== */
+.industries-header-block {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px auto;
+}
+
+.industry-grid {
+    display: block;
+    font-size: 0;
+}
+
+.industry-card {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 35px 25px;
+    text-align: center;
+    transition: var(--transition-smooth);
+    display: inline-block;
+    width: calc(25% - 20px);
+    margin: 10px;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+.industry-card:hover {
+    background-color: var(--accent-orange);
+    border-color: var(--accent-orange);
+    transform: scale(1.03);
+}
+
+.industry-card h4 {
+    font-family: var(--font-nav);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: var(--transition-smooth);
+    color: var(--text-main);
+}
+
+.industry-card:hover h4 {
+    color: var(--bg-primary);
+}
+
+/* 12. Component Portfolio Image Gallery Layout
+   ========================================================================== */
+.gallery-section {
+    background-color: var(--bg-secondary);
+    padding-bottom: 0;
+}
+
+.gallery-header-margin {
+    margin-bottom: 50px;
+}
+
+.gallery-header-wrapper {
+    display: table;
+    width: 100%;
+}
+
+.gallery-header-wrapper > div {
+    display: table-cell;
+    vertical-align: bottom;
+}
+
+.gallery-header-wrapper > .btn {
+    display: table-cell;
+    vertical-align: bottom;
+    text-align: right;
+}
+
+.gallery-preview-grid {
+    display: block;
+    font-size: 0;
+}
+
+.gallery-item {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+    background-color: var(--bg-secondary);
+    display: inline-block;
+    width: 25%;
+    vertical-align: top;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(40%);
+    transition: var(--transition-smooth);
+}
+
+.gallery-item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15,17,21,0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: var(--transition-smooth);
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.gallery-item-overlay h4 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: var(--accent-orange);
+}
+
+.gallery-item-overlay p {
+    font-size: 0.8rem;
+    color: var(--text-main);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+.gallery-item:hover .gallery-item-overlay {
+    opacity: 1;
+}
+
+/* 13. Call To Action Conversion Hub Layout
+   ========================================================================== */
+.cta-section {
+    padding: 0;
+}
+
+.cta-banner {
+    background: linear-gradient(90deg, #15181D 0%, #1A1D22 100%);
+    border-top: 4px solid var(--accent-orange);
+    text-align: center;
+    padding: 90px 40px;
+}
+
+.cta-banner h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.cta-banner p {
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    font-size: 1.1rem;
+}
+
+.cta-button-group {
+    display: block;
+}
+
+.cta-button-group .btn {
+    margin: 10px;
+    vertical-align: middle;
+}
+
+.btn-whatsapp {
+    border-color: #25D366; 
+    color: #25D366;
+    background-color: transparent;
+}
+
+.btn-whatsapp:hover {
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.3);
+    background-color: transparent;
+    border-color: #25D366;
+}
+
+/* 14. High-Tier B2B Corporate Footer System
+   ========================================================================== */
+footer {
+    background-color: #0A0B0E;
+    padding: 80px 0 30px 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: block;
+}
+
+.footer-grid {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    margin-bottom: 60px;
+}
+
+.footer-col {
+    display: table-cell;
+    vertical-align: top;
+    padding: 0 20px;
+}
+
+.footer-grid .footer-col:first-child {
+    padding-left: 0;
+    width: 33%;
+}
+
+.footer-grid .footer-col:last-child {
+    padding-right: 0;
+    width: 33%;
+}
+
+.footer-logo {
+    font-size: 1.3rem; 
+    margin-bottom: 20px; 
+    color: var(--text-main);
+}
+
+.footer-logo span {
+    color: var(--accent-orange);
+}
+
+.footer-highlight {
+    color: var(--accent-orange); 
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+.footer-col h4 {
+    font-family: var(--font-nav);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    color: var(--text-main);
+    position: relative;
+}
+
+.footer-col h4::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--accent-orange);
+}
+
+.footer-col p {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links li a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: var(--transition-smooth);
+    display: inline-block;
+}
+
+.footer-links li a:hover {
+    color: var(--accent-orange);
+    padding-left: 5px;
+}
+
+.contact-info-list {
+    list-style: none;
+}
+
+.contact-info-list li {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.contact-info-list li span {
+    margin-right: 10px;
+    color: var(--accent-orange);
+}
+
+.contact-info-list li strong {
+    color: var(--text-main);
+    font-family: var(--font-nav);
+    display: block;
+    margin-bottom: 2px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 30px;
+    display: table;
+    width: 100%;
+}
+
+.footer-bottom p {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 0.8rem;
+    width: 60%;
+}
+
+.legal-links {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+    width: 40%;
+}
+
+.legal-links a {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    margin-left: 25px;
+}
+
+.legal-links a:hover {
+    color: var(--accent-orange);
+}
+
+/* 15. Animation Structural Reveal State Classes
+   ========================================================================== */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal-active {
+    opacity: 1;
+    transform: translate(0) scale(1);
+}
+
+/* 16. Structural Responsive Media Rules (Grid Collapses)
+   ========================================================================== */
+@media (max-width: 1200px) {
+    .hero-content h1 { font-size: 3.5rem; }
+    
+    .about-split > div, .mfg-split > div { 
+        display: block; 
+        width: 100% !important; 
+        padding-left: 0 !important; 
+        padding-right: 0 !important; 
+    }
+    .about-split > div:first-child, .mfg-split > div:first-child {
+        margin-bottom: 50px;
+    }
+    
+    .stats-grid, .wcu-grid, .footer-grid { 
+        display: block; 
+    }
+    .stat-item {
+        display: inline-block;
+        width: 50%;
+        margin-bottom: 30px;
+    }
+    .wcu-card {
+        display: block;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .product-cat-card {
+        width: calc(50% - 20px);
+    }
+    .industry-card {
+        width: calc(50% - 20px);
+    }
+    .gallery-item {
+        width: 50%;
+    }
+    .footer-col {
+        display: inline-block;
+        width: 50% !important;
+        margin-bottom: 40px;
+        vertical-align: top;
+    }
+    .footer-grid .footer-col:first-child, .footer-grid .footer-col:last-child {
+        width: 50% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .container { padding: 0 20px; }
+    section { padding: 80px 0; }
+    .section-title { font-size: 2.2rem; }
+    
+    nav, .nav-cta .btn { display: none; }
+    .mobile-toggle { display: flex; }
+    
+    .hero-content h1 { font-size: 2.8rem; }
+    .hero-button-group .btn {
+        display: block;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .stat-item, .product-cat-card, .industry-card, .gallery-item, .footer-col, .footer-grid .footer-col:first-child, .footer-grid .footer-col:last-child {
+        width: 100% !important;
+        display: block;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .footer-bottom, .footer-bottom p, .legal-links {
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+    .footer-bottom p {
+        margin-bottom: 20px;
+    }
+    .legal-links a {
+        display: block;
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+    .about-experience-badge { 
+        position: static; 
+        margin-top: 20px; 
+    }
+}

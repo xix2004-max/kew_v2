@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>About Our Corporate Legacy & Infrastructure | Kamala Engineering Works</title>
+    <meta name="description" content="Discover the manufacturing philosophy, history, and heavy industrial capabilities of Kamala Engineering Works. Operating since 1999, we deliver top-tier custom machined components, heavy fabrications, and precision parts.">
+    <meta name="keywords" content="about engineering company, manufacturing facility profile, Kamala Engineering history, industrial production workshop, certified engineering works">
+    <meta name="author" content="Kamala Engineering Works">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.kamalaengineering.com/pages/about.html">
+    <meta property="og:title" content="About Corporate Profile & Workshop | Kamala Engineering Works">
+    <meta property="og:description" content="An insight into our 25+ year legacy, core operational values, plant infrastructure, and strategic future goals.">
+    <meta property="og:image" content="../assets/images/about-workshop-summary.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Oswald:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <style>
+        /* Contextual Layout Additions for Corporate About Profile Page */
+        .about-hero {
+            height: 45vh;
+            background: linear-gradient(135deg, rgba(15,17,21,0.95) 50%, rgba(26,29,34,0.8)), url('../assets/images/hero-industrial-fallback.jpg') no-repeat center center;
+            background-size: cover;
+            display: table;
+            width: 100%;
+            padding: 0;
+        }
+
+        .about-hero .container {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .philosophy-grid {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            margin-top: 50px;
+        }
+
+        .philosophy-col {
+            display: table-cell;
+            width: 50%;
+            vertical-align: top;
+        }
+
+        .philosophy-col:first-child {
+            padding-right: 40px;
+        }
+
+        .philosophy-col:last-child {
+            padding-left: 40px;
+        }
+
+        .philosophy-card {
+            background-color: var(--bg-secondary);
+            border-top: 3px solid var(--accent-orange);
+            padding: 45px;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .philosophy-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        /* Value Matrices Infrastructure */
+        .values-grid {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: separate;
+            border-spacing: 30px 0;
+            margin-left: -30px;
+            margin-right: -30px;
+            margin-top: 50px;
+        }
+
+        .value-card {
+            display: table-cell;
+            background-color: var(--bg-card);
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.02);
+            vertical-align: top;
+            transition: var(--transition-smooth);
+        }
+
+        .value-card:hover {
+            border-color: rgba(255,107,0,0.2);
+            transform: translateY(-5px);
+        }
+
+        .value-card h3 {
+            font-family: var(--font-nav);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            color: var(--accent-orange);
+        }
+
+        /* Timeline Components Architecture */
+        .timeline-container {
+            position: relative;
+            margin-top: 60px;
+            padding-left: 40px;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 5px;
+            width: 2px;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: -40px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent-orange);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .timeline-year {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--text-main);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .timeline-content h3 {
+            font-family: var(--font-nav);
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Responsive structural adjustments */
+        @media (max-width: 1200px) {
+            .philosophy-grid, .values-grid { display: block; margin-left: 0; margin-right: 0; border-spacing: 0; }
+            .philosophy-col, .value-card { display: block; width: 100% !important; padding: 0 !important; margin-bottom: 30px; }
+            .philosophy-col:last-child, .values-grid div:last-child { margin-bottom: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="scroll-progress"></div>
+
+    <div id="preloader">
+        <div class="preloader-center-wrapper">
+            <div class="spinner"></div>
+            <div class="preloader-text">Kamala Engineering Works</div>
+        </div>
+    </div>
+
+    <header id="main-header">
+        <div class="container nav-wrapper">
+            <a href="../index.html" class="logo-text">KAMALA<span>ENGINEERING</span></a>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About Profile</a></li>
+                    <li><a href="products.html">Product Catalogue</a></li>
+                    <li><a href="custom-manufacturing.html">Custom Manufacturing</a></li>
+                    <li><a href="gallery.html">Infrastructure Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cta">
+                <a href="request-quote.html" class="btn btn-nav-quote">Request Quote</a>
+                <div class="mobile-toggle" id="mobile-menu-trigger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="about-hero">
+        <div class="container">
+            <div class="reveal-up">
+                <span class="section-subtitle">Enterprise Profile Portfolio</span>
+                <h1 style="font-size: 3.5rem; margin-bottom: 0;">Our Corporate <span>Legacy</span></h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-section">
+        <div class="container about-split">
+            <div class="reveal-left">
+                <span class="section-subtitle">The Manufacturing Narrative</span>
+                <h2 class="section-title">Rooted In Precision, Built For <span>Scale</span></h2>
+                <p style="margin-bottom: 25px;">Established in 1999 in the heart of West Bengal's industrial belt, Kamala Engineering Works emerged with a singular core focus: to bridge the critical supply gap for heavy machinery components and replacement hardware facing rapid infrastructure integration lines.</p>
+                <p style="margin-bottom: 25px;">What started as a specialized tool-room lathe cell has systematically evolved over a quarter-century into a heavy industrial ecosystem house. Today, we directly support standard inventory management and mission-critical component reverse engineering requirements for state enterprises, steel plants, processing factories, and global OEMs.</p>
+                <p>We do not operate general commercial retail queues or online checkout carts. Every casting poured, bar turned, or spline profile cut at our facility is subjected to strict contractual evaluation parameters and engineering validation routines to preserve structural chain mechanics intact.</p>
+            </div>
+            <div class="about-image-wrapper reveal-right">
+                <img src="../assets/images/about-workshop-summary.jpg" alt="Kamala Engineering Works Main Factory Floor View" class="about-image-main">
+            </div>
+        </div>
+    </section>
+
+    <section class="philosophy-section" style="background-color: var(--bg-secondary);">
+        <div class="container">
+            <div style="text-align: center; max-width: 700px; margin: 0 auto;" class="reveal-up">
+                <span class="section-subtitle">Strategic Orientation Blueprint</span>
+                <h2 class="section-title">Our Operational <span>Philosophy</span></h2>
+                <p>Aligning long-term enterprise development horizons with immediate sub-micron mechanical execution priorities.</p>
+            </div>
+
+            <div class="philosophy-grid reveal-up">
+                <div class="philosophy-col">
+                    <div class="philosophy-card">
+                        <h3>Our Corporate Mission</h3>
+                        <p>To eliminate processing down-times within core international heavy infrastructure by supplying high-stress mechanical components engineered to exact structural requirements. We are dedicated to providing robust, traceable manufacturing lines that serve as reliable links within every B2B tier-1 contractual supply chain.</p>
+                    </div>
+                </div>
+                <div class="philosophy-col">
+                    <div class="philosophy-card">
+                        <h3>Our Forward Vision</h3>
+                        <p>To solidify our status as the premier customized heavy contracting engineering partner across India and globally. We continuously integrate multi-axis automated CNC technology, absolute materials intelligence verification setups, and sustainable metallurgy practices without altering our standard of precision.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="container">
+            <div style="text-align: center; max-width: 700px; margin: 0 auto 30px auto;" class="reveal-up">
+                <span class="section-subtitle">Ethical Operational Foundations</span>
+                <h2 class="section-title">The Principles of Our <span>Plant Floor</span></h2>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card reveal-up">
+                    <h3>01. Metallurgical Absolute Integrity</h3>
+                    <p>We strictly oppose material grade substitution protocols. Every batch of copper alloys, carbon tool steels, or cast iron bars processed matches chemical and structural parameters flawlessly.</p>
+                </div>
+                <div class="value-card reveal-up" style="transition-delay: 0.1s;">
+                    <h3>02. Contractual Non-Disclosure Guard</h3>
+                    <p>Industrial client technical drawings, blueprint configurations, patent-pending proprietary profiles, and CAD geometry parameters remain strictly secure within our digital estimation vault.</p>
+                </div>
+                <div class="value-card reveal-up" style="transition-delay: 0.2s;">
+                    <h3>03. Rigorous Geometric Accountability</h3>
+                    <p>A tolerance specification sheet isn’t a target range; it's an absolute boundary. If a design mandates an h7 precision slip fit metric, our quality inspection team ensures compliance before shipping.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline-section" style="background-color: var(--bg-secondary);">
+        <div class="container" style="max-width: 1000px;">
+            <div style="text-align: center; margin-bottom: 60px;" class="reveal-up">
+                <span class="section-subtitle">Evolutionary Trajectory</span>
+                <h2 class="section-title">Our Growth <span>Timeline</span></h2>
+                <p>Tracing twenty-five years of asset acquisition, scale development, and consistent quality execution.</p>
+            </div>
+
+            <div class="timeline-container reveal-up">
+                
+                <div class="timeline-item">
+                    <span class="timeline-year">1999</span>
+                    <div class="timeline-content">
+                        <h3>Foundation & First Tool-Room Installation</h3>
+                        <p>Kamala Engineering Works starts operations with three conventional machining systems, serving regional agricultural equipment assembly points and basic hardware sorting queues.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-year">2007</span>
+                    <div class="timeline-content">
+                        <h3>Heavy Gear Hobbing Expansion & Metallurgical Integration</h3>
+                        <p>Acquires automated heavy profiling hobbing systems, allowing the company to source, cut, treat, and ship large modular transmission gears up to Class 8 tolerance specifications.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-year">2015</span>
+                    <div class="timeline-content">
+                        <h3>Automated VMC Setup & ISO Certification</h3>
+                        <p>Launches a dedicated automated shop floor featuring modern Vertical Machining Centers. The plant receives ISO 9001 certification and establishes direct vendor connections with steel mills.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-year">2026</span>
+                    <div class="timeline-content">
+                        <h3>Next-Gen Reverse Engineering Portal & Future Horizon</h3>
+                        <p>Launches an end-to-end technical estimation drawing room featuring multi-gigabit parsing workflows, laying the groundwork for a future automated manufacturing management hub.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" style="padding: 0;">
+        <div class="cta-banner">
+            <div class="container reveal-up">
+                <h2>Ready to Partner With a Proven Engineering House?</h2>
+                <p>Let's discuss contract pricing terms, material availability matrices, volume capabilities, and delivery logistics schedules directly over a formal technical assessment session.</p>
+                <div class="cta-button-group">
+                    <a href="request-quote.html" class="btn">Initiate Technical RFQ</a>
+                    <a href="contact.html" class="btn btn-secondary">Contact Engineering Office</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4 class="footer-logo">KAMALA<span>ENGINEERING</span></h4>
+                <p>Premium dark-tier heavy enterprise tier manufacturing specialists. Producing mission critical mechanical hardware configurations across high-load processing plants globally with zero precision compromises.</p>
+                <p class="footer-highlight">ISO 9001:2015 Structural Manufacturing Certified Plant Facility</p>
+            </div>
+            <div class="footer-col">
+                <h4>Component Matrices</h4>
+                <ul class="footer-links">
+                    <li><a href="products.html">Machine Spare Parts</a></li>
+                    <li><a href="products.html">Industrial Shaft Systems</a></li>
+                    <li><a href="products.html">Precision Transmission Gears</a></li>
+                    <li><a href="products.html">Bronze Sleeves & Bushes</a></li>
+                    <li><a href="products.html">Heavy Structural Weldments</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Site Structure</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Corporate Profile</a></li>
+                    <li><a href="custom-manufacturing.html">Machinery Capability Mapping</a></li>
+                    <li><a href="gallery.html">Infrastructure Vault</a></li>
+                    <li><a href="request-quote.html">Submit Design RFQ</a></li>
+                    <li><a href="contact.html">Contact Engineering Office</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Registered Plant Office</h4>
+                <ul class="contact-info-list">
+                    <li>
+                        <span>📌</span>
+                        <div><strong>Factory Floor Premises:</strong> Industrial Manufacturing Zone, Phase II, Tool-Room Hub, Kolkata, West Bengal, Pin 700001, India</div>
+                    </li>
+                    <li>
+                        <span>📞</span>
+                        <div><strong>Procurement Hotline:</strong> +91-XXXXXXXXXX / +91-XXXXXXXXXX</div>
+                    </li>
+                    <li>
+                        <span>📧</span>
+                        <div><strong>Secure B2B Inquiries:</strong> tender@kamalaengineering.com / sales@kamalaengineering.com</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© 2026 Kamala Engineering Works. All Engineering Blueprints and Hardware Layout Property Protected. Handcrafted with zero external UI framework dependencies.</p>
+            <div class="legal-links">
+                <a href="privacy-policy.html">Data Security & NDA Privacy Policy</a>
+                <a href="privacy-policy.html">Terms of Manufacturing Specification Agreements</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

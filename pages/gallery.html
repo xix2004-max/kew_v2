@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Infrastructure Vault & Completed Projects Gallery | Kamala Engineering Works</title>
+    <meta name="description" content="Explore our heavy industrial manufacturing facility, custom high-tolerance machinery floor components, multi-axis CNC/VMC setups, and certified structural fabrications portfolio.">
+    <meta name="keywords" content="machining workshop gallery, CNC plant floor images, heavy engineering portfolio, gears manufacturing gallery, industrial products photography">
+    <meta name="author" content="Kamala Engineering Works">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.kamalaengineering.com/pages/gallery.html">
+    <meta property="og:title" content="Infrastructure Vault & Manufacturing Gallery | Kamala Engineering Works">
+    <meta property="og:description" content="A visual comprehensive portfolio showcasing our real machinery deployment layout, custom components, and specialized tool-room workflow.">
+    <meta property="og:image" content="../assets/images/gallery/machinery-cnc-vmc.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Oswald:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <style>
+        /* Contextual Additions for Interactive Portfolio Lightbox Filter Grid System */
+        .gallery-hero {
+            height: 45vh;
+            background: linear-gradient(135deg, rgba(15,17,21,0.95) 50%, rgba(26,29,34,0.8)), url('../assets/images/gallery-hero-bg.jpg') no-repeat center center;
+            background-size: cover;
+            display: table;
+            width: 100%;
+            padding: 0;
+        }
+
+        .gallery-hero .container {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        /* Filter Controls Architecture */
+        .filter-controls-wrapper {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            padding: 12px 28px;
+            font-family: var(--font-nav);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            margin: 5px;
+            transition: var(--transition-smooth);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            color: var(--text-main);
+            border-color: var(--accent-orange);
+            background-color: rgba(255, 107, 0, 0.05);
+            box-shadow: 0 0 15px rgba(255, 107, 0, 0.15);
+        }
+
+        /* Portfolio Functional Flex-Grid Blocks */
+        .portfolio-matrix-grid {
+            display: block;
+            font-size: 0;
+            margin: -10px;
+        }
+
+        .portfolio-grid-item {
+            display: inline-block;
+            width: calc(33.333% - 20px);
+            margin: 10px;
+            position: relative;
+            height: 340px;
+            overflow: hidden;
+            background-color: var(--bg-secondary);
+            vertical-align: top;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .portfolio-grid-item.hidden {
+            display: none !important;
+        }
+
+        .portfolio-grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(30%);
+            transition: var(--transition-smooth);
+        }
+
+        .portfolio-grid-item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15,17,21,0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition-smooth);
+            padding: 30px;
+            box-sizing: border-box;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-orange);
+        }
+
+        .portfolio-grid-item-overlay h3 {
+            font-size: 1.3rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .portfolio-grid-item-overlay span {
+            font-family: var(--font-nav);
+            color: var(--accent-orange);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .portfolio-grid-item-overlay p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .portfolio-grid-item:hover img {
+            transform: scale(1.08);
+            filter: grayscale(0%);
+        }
+
+        .portfolio-grid-item:hover .portfolio-grid-item-overlay {
+            opacity: 1;
+        }
+
+        /* Pure CSS Modular Lightbox UI overlay */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 11, 14, 0.98);
+            z-index: 10000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            text-align: center;
+        }
+
+        .lightbox-overlay:target {
+            display: block;
+            opacity: 1;
+        }
+
+        .lightbox-wrapper {
+            display: table;
+            width: 100%;
+            height: 100%;
+        }
+
+        .lightbox-cell {
+            display: table-cell;
+            vertical-align: middle;
+            position: relative;
+            padding: 40px;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 80vh;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+
+        .lightbox-caption {
+            margin-top: 20px;
+            font-family: var(--font-nav);
+            font-size: 1rem;
+            color: var(--text-main);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            color: #FFFFFF;
+            font-size: 2.5rem;
+            text-decoration: none;
+            font-family: var(--font-body);
+            transition: var(--transition-smooth);
+            width: 50px;
+            height: 50px;
+            line-height: 44px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        .lightbox-close:hover {
+            color: var(--accent-orange);
+            border-color: var(--accent-orange);
+            transform: rotate(90deg);
+        }
+
+        /* Responsive Breakpoints for Grid Components */
+        @media (max-width: 1200px) {
+            .portfolio-grid-item { width: calc(50% - 20px); }
+        }
+        @media (max-width: 768px) {
+            .portfolio-grid-item { width: 100%; margin: 10px 0; }
+            .filter-btn { width: 100%; margin: 5px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="scroll-progress"></div>
+
+    <div id="preloader">
+        <div class="preloader-center-wrapper">
+            <div class="spinner"></div>
+            <div class="preloader-text">Kamala Engineering Works</div>
+        </div>
+    </div>
+
+    <header id="main-header">
+        <div class="container nav-wrapper">
+            <a href="../index.html" class="logo-text">KAMALA<span>ENGINEERING</span></a>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About Profile</a></li>
+                    <li><a href="products.html">Product Catalogue</a></li>
+                    <li><a href="custom-manufacturing.html">Custom Manufacturing</a></li>
+                    <li><a href="gallery.html" class="active">Infrastructure Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cta">
+                <a href="request-quote.html" class="btn btn-nav-quote">Request Quote</a>
+                <div class="mobile-toggle" id="mobile-menu-trigger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="gallery-hero">
+        <div class="container">
+            <div class="reveal-up">
+                <span class="section-subtitle">Visual Infrastructure Portfolio</span>
+                <h1 style="font-size: 3.5rem; margin-bottom: 0;">Facility Vault & <span>Gallery</span></h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-main-matrix">
+        <div class="container">
+            
+            <div class="filter-controls-wrapper reveal-up">
+                <button class="filter-btn active" onclick="filterGallery('all', this)">All Vaults</button>
+                <button class="filter-btn" onclick="filterGallery('workshop', this)">Workshop Floor</button>
+                <button class="filter-btn" onclick="filterGallery('machinery', this)">Machinery Matrix</button>
+                <button class="filter-btn" onclick="filterGallery('components', this)">Finished Components</button>
+                <button class="filter-btn" onclick="filterGallery('projects', this)">Heavy Projects</button>
+            </div>
+
+            <div class="portfolio-matrix-grid reveal-up">
+                
+                <div class="portfolio-grid-item" data-category="workshop">
+                    <img src="../assets/images/gallery/workshop-floor-main.jpg" alt="Kamala Heavy Duty Machining Floor Layout View">
+                    <div class="portfolio-grid-item-overlay">
+                        <span>Workshop Floor</span>
+                        <h3>Bay 1 Machine Shop</h3>
+                        <p>Overhead crane routing coverage across standard milling assembly lines.</p>
+                        <a href="#img1" class="btn btn-secondary" style="font-size:0.75rem; padding:10px 20px;">Maximize Image</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-grid-item" data-category="machinery">
+                    <img src="../assets/images/gallery/machinery-cnc-vmc.jpg" alt="High Tolerance CNC Machining Center Running Array">
+                    <div class="portfolio-grid-item-overlay">
+                        <span>Machinery Matrix</span>
+                        <h3>Precision 4-Axis VMC</h3>
+                        <p>Vertical automated high-speed tool centers parsing alloy castings.</p>
+                        <a href="#img2" class="btn btn-secondary" style="font-size:0.75rem; padding:10px 20px;">Maximize Image</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-grid-item" data-category="components">
+                    <img src="../assets/images/gallery/component-gears-set.jpg" alt="Heavy Spur and Bevel Gear Transmission Units Finished">
+                    <div class="portfolio-grid-item-overlay">
+                        <span>Finished Components</span>
+                        <h3>Heavy Spur Gear sets</h3>
+                        <p>Carbon-hardened rolling mill drives checked for micron profiling tolerances.</p>
+                        <a href="#img3" class="btn btn-secondary" style="font-size:0.75rem; padding:10px 20px;">Maximize Image</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-grid-item" data-category="projects">
+                    <img src="../assets/images/gallery/project-steel-mill.jpg" alt="Completed Custom Fabricated Roll Assembly Unit Box">
+                    <div class="portfolio-grid-item-overlay">
+                        <span>Heavy Projects</span>
+                        <h3>Roll Housing Block</h3>
+                        <p>Heavy duty structural chassis constructed for steel manufacturing integration loops.</p>
+                        <a href="#img4" class="btn btn-secondary" style="font-size:0.75rem; padding:10px 20px;">Maximize Image</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-grid-item" data-category="workshop">
+                    <img src="../assets/images/gallery/workshop-testing-lab.jpg" alt="Metallurgical Material Quality Traceability Inspection Area">
+                    <div class="portfolio-grid-item-overlay">
+                        <span>Workshop Floor</span>
+                        <h3>Metallurgy Validation Room</h3>
+                        <p>Hardness diagnostic evaluation systems tracking casting material authenticity logs.</p>
+                        <a href="#img5" class="btn btn-secondary" style="font-size:0.75rem; padding:10px 20px;">Maximize Image</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-grid-item" data-category="machinery">
+                    <img src="../assets/images/gallery/machinery-gear-hobber.jpg" alt="Heavy Gear Hobbing Machine Operational Set">
+                    <div class="portfolio-grid-item-overlay">
+                        <span>Machinery Matrix</span>
+                        <h3>Heavy Duty Hobbing Rig</h3>
+                        <p>High-torque dynamic cutters producing outer module spline geometries.</p>
+                        <a href="#img6" class="btn btn-secondary" style="font-size:0.75rem; padding:10px 20px;">Maximize Image</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-grid-item" data-category="components">
+                    <img src="../assets/images/gallery/component-shafts-forged.jpg" alt="Machined Hardened Alloy Drive Axles and Shafts Layout">
+                    <div class="portfolio-grid-item-overlay">
+                        <span>Finished Components</span>
+                        <h3>Precision Axle Shafts</h3>
+                        <p>Ground stepped cylinders featuring integrated keyway configurations.</p>
+                        <a href="#img7" class="btn btn-secondary" style="font-size:0.75rem; padding:10px 20px;">Maximize Image</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-grid-item" data-category="components">
+                    <img src="../assets/images/gallery/component-bushes-bronze.jpg" alt="Machined Phosphor Bronze Sleeves and Slide Bearings">
+                    <div class="portfolio-grid-item-overlay">
+                        <span>Finished Components</span>
+                        <h3>Bronze Flanged Sleeves</h3>
+                        <p>Friction mitigating load hardware machined to precise slip clearance tolerances.</p>
+                        <a href="#img8" class="btn btn-secondary" style="font-size:0.75rem; padding:10px 20px;">Maximize Image</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-grid-item" data-category="projects">
+                    <img src="../assets/images/gallery/project-weldment-chassis.jpg" alt="Heavy Metal Structural Machined Framework Sub Assembly Weldment">
+                    <div class="portfolio-grid-item-overlay">
+                        <span>Heavy Projects</span>
+                        <h3>Damped Foundation Base</h3>
+                        <p>Structurally continuous complex weldment frame layout built for OEM system installers.</p>
+                        <a href="#img9" class="btn btn-secondary" style="font-size:0.75rem; padding:10px 20px;">Maximize Image</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div id="img1" class="lightbox-overlay">
+        <div class="lightbox-wrapper">
+            <div class="lightbox-cell">
+                <a href="#close" class="lightbox-close">&times;</a>
+                <img src="../assets/images/gallery/workshop-floor-main.jpg" alt="Bay 1 Machine Shop Overview" class="lightbox-img">
+                <div class="lightbox-caption">Bay 1 Machine Shop - Workshop Floor Infrastructure</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="img2" class="lightbox-overlay">
+        <div class="lightbox-wrapper">
+            <div class="lightbox-cell">
+                <a href="#close" class="lightbox-close">&times;</a>
+                <img src="../assets/images/gallery/machinery-cnc-vmc.jpg" alt="Precision 4-Axis VMC Setup" class="lightbox-img">
+                <div class="lightbox-caption">Precision 4-Axis VMC - Machinery Matrix Setup</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="img3" class="lightbox-overlay">
+        <div class="lightbox-wrapper">
+            <div class="lightbox-cell">
+                <a href="#close" class="lightbox-close">&times;</a>
+                <img src="../assets/images/gallery/component-gears-set.jpg" alt="Heavy Spur Gear Sets Finished Layout" class="lightbox-img">
+                <div class="lightbox-caption">Heavy Spur Gear sets - Finished Component Inventory</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="img4" class="lightbox-overlay">
+        <div class="lightbox-wrapper">
+            <div class="lightbox-cell">
+                <a href="#close" class="lightbox-close">&times;</a>
+                <img src="../assets/images/gallery/project-steel-mill.jpg" alt="Roll Housing Block Assembly Structure" class="lightbox-img">
+                <div class="lightbox-caption">Roll Housing Block Assembly - Completed Heavy Projects</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="img5" class="lightbox-overlay">
+        <div class="lightbox-wrapper">
+            <div class="lightbox-cell">
+                <a href="#close" class="lightbox-close">&times;</a>
+                <img src="../assets/images/gallery/workshop-testing-lab.jpg" alt="Metallurgy Validation Inspection Infrastructure" class="lightbox-img">
+                <div class="lightbox-caption">Metallurgy Validation Room - Quality Control Hub</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="img6" class="lightbox-overlay">
+        <div class="lightbox-wrapper">
+            <div class="lightbox-cell">
+                <a href="#close" class="lightbox-close">&times;</a>
+                <img src="../assets/images/gallery/machinery-gear-hobber.jpg" alt="Heavy Duty Hobbing Cutters Set" class="lightbox-img">
+                <div class="lightbox-caption">Heavy Duty Hobbing Rig - Component Processing Cutters</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="img7" class="lightbox-overlay">
+        <div class="lightbox-wrapper">
+            <div class="lightbox-cell">
+                <a href="#close" class="lightbox-close">&times;</a>
+                <img src="../assets/images/gallery/component-shafts-forged.jpg" alt="Precision Forged Axle Shaft Components Layout" class="lightbox-img">
+                <div class="lightbox-caption">Precision Axle Shafts - Hardened Hardened alloy Stocks</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="img8" class="lightbox-overlay">
+        <div class="lightbox-wrapper">
+            <div class="lightbox-cell">
+                <a href="#close" class="lightbox-close">&times;</a>
+                <img src="../assets/images/gallery/component-bushes-bronze.jpg" alt="Bronze Flanged Sleeves Portfolio Grid" class="lightbox-img">
+                <div class="lightbox-caption">Bronze Flanged Sleeves - Friction Reduction sleeves</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="img9" class="lightbox-overlay">
+        <div class="lightbox-wrapper">
+            <div class="lightbox-cell">
+                <a href="#close" class="lightbox-close">&times;</a>
+                <img src="../assets/images/gallery/project-weldment-chassis.jpg" alt="Complex Structural Metal Sub Frame Weldment Base" class="lightbox-img">
+                <div class="lightbox-caption">Damped Foundation Base - Precision Structural Weldment Frame</div>
+            </div>
+        </div>
+    </div>
+
+    <section class="cta-section" style="padding: 0;">
+        <div class="cta-banner">
+            <div class="container reveal-up">
+                <h2>Require High-Resolution Photos for Engineering Validation?</h2>
+                <p>If your procurement parameters or vendor registration evaluations necessitate comprehensive component material heat sheets, asset certification trails, or plant inventory breakdown document arrays, sync with our plant estimators.</p>
+                <div class="cta-button-group">
+                    <a href="request-quote.html" class="btn">Initiate Procurement RFQ</a>
+                    <a href="contact.html" class="btn btn-secondary">Contact Corporate Plant Desk</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4 class="footer-logo">KAMALA<span>ENGINEERING</span></h4>
+                <p>Premium dark-tier heavy enterprise tier manufacturing specialists. Producing mission critical mechanical hardware configurations across high-load processing plants globally with zero precision compromises.</p>
+                <p class="footer-highlight">ISO 9001:2015 Structural Manufacturing Certified Plant Facility</p>
+            </div>
+            <div class="footer-col">
+                <h4>Component Matrices</h4>
+                <ul class="footer-links">
+                    <li><a href="products.html">Machine Spare Parts</a></li>
+                    <li><a href="products.html">Industrial Shaft Systems</a></li>
+                    <li><a href="products.html">Precision Transmission Gears</a></li>
+                    <li><a href="products.html">Bronze Sleeves & Bushes</a></li>
+                    <li><a href="products.html">Heavy Structural Weldments</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Site Structure</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Corporate Profile</a></li>
+                    <li><a href="custom-manufacturing.html">Machinery Capability Mapping</a></li>
+                    <li><a href="gallery.html">Infrastructure Vault</a></li>
+                    <li><a href="request-quote.html">Submit Design RFQ</a></li>
+                    <li><a href="contact.html">Contact Engineering Office</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Registered Plant Office</h4>
+                <ul class="contact-info-list">
+                    <li>
+                        <span>📌</span>
+                        <div><strong>Factory Floor Premises:</strong> Industrial Manufacturing Zone, Phase II, Tool-Room Hub, Kolkata, West Bengal, Pin 700001, India</div>
+                    </li>
+                    <li>
+                        <span>📞</span>
+                        <div><strong>Procurement Hotline:</strong> +91-XXXXXXXXXX / +91-XXXXXXXXXX</div>
+                    </li>
+                    <li>
+                        <span>📧</span>
+                        <div><strong>Secure B2B Inquiries:</strong> tender@kamalaengineering.com / sales@kamalaengineering.com</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© 2026 Kamala Engineering Works. All Engineering Blueprints and Hardware Layout Property Protected. Handcrafted with zero external UI framework dependencies.</p>
+            <div class="legal-links">
+                <a href="privacy-policy.html">Data Security & NDA Privacy Policy</a>
+                <a href="privacy-policy.html">Terms of Manufacturing Specification Agreements</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function filterGallery(categorySelected, buttonClicked) {
+            // Remove active classes across entire category button array controls deck
+            const controlButtons = document.querySelectorAll('.filter-btn');
+            controlButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Activate target interaction node selector parameters
+            if (buttonClicked) {
+                buttonClicked.classList.add('active');
+            }
+
+            // Route item displays with high efficiency DOM transformation sweeps
+            const targetPortfolioItems = document.querySelectorAll('.portfolio-grid-item');
+            
+            targetPortfolioItems.forEach(item => {
+                const itemCategoryAttribute = item.getAttribute('data-category');
+                
+                if (categorySelected === 'all' || itemCategoryAttribute === categorySelected) {
+                    item.classList.remove('hidden');
+                    // Force display synchronization block to enable native animation transitions smoothly
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1) translateY(0)';
+                    }, 50);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.95) translateY(10px)';
+                    // Delay execution drop until native fade animation completes cycles cleanly
+                    setTimeout(() => {
+                        item.classList.add('hidden');
+                    }, 400);
+                }
+            });
+        }
+    </script>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Contact Engineering Office & Plant | Kamala Engineering Works</title>
+    <meta name="description" content="Connect directly with the procurement and estimating desks at Kamala Engineering Works. Access official factory addresses, business operational hours, direct plant contact lines, and secure inbound technical routing parameters.">
+    <meta name="keywords" content="contact manufacturing plant, Kamala Engineering Works address, request engineering quote, heavy machinery factory Kolkata, B2B procurement office">
+    <meta name="author" content="Kamala Engineering Works">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.kamalaengineering.com/pages/contact.html">
+    <meta property="og:title" content="Contact Engineering Office & Plant | Kamala Engineering Works">
+    <meta property="og:description" content="Get in touch with our commercial Estimating Desk, route production drawing files, or arrange a formal facility inspection.">
+    <meta property="og:image" content="../assets/images/og-industrial-manufacturing.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Oswald:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <style>
+        /* Contextual Layout Additions for Contact Page System */
+        .contact-hero {
+            height: 45vh;
+            background: linear-gradient(135deg, rgba(15,17,21,0.95) 50%, rgba(26,29,34,0.8)), url('../assets/images/contact-hero-bg.jpg') no-repeat center center;
+            background-size: cover;
+            display: table;
+            width: 100%;
+            padding: 0;
+        }
+
+        .contact-hero .container {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .contact-layout-split {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .contact-sidebar {
+            display: table-cell;
+            width: 40%;
+            vertical-align: top;
+            padding-right: 60px;
+        }
+
+        .contact-form-wrapper {
+            display: table-cell;
+            width: 60%;
+            vertical-align: top;
+            background-color: var(--bg-secondary);
+            padding: 50px;
+            border: 1px solid rgba(255,255,255,0.02);
+        }
+
+        .contact-card-item {
+            background-color: var(--bg-card);
+            border-left: 3px solid var(--accent-orange);
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        .contact-card-item h3 {
+            font-family: var(--font-nav);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .contact-card-item p {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .form-row {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            margin-bottom: 25px;
+        }
+
+        .form-col {
+            display: table-cell;
+            padding: 0 12px;
+        }
+
+        .form-row .form-col:first-child { padding-left: 0; }
+        .form-row .form-col:last-child { padding-right: 0; }
+
+        .form-group {
+            display: block;
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: var(--font-nav);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .form-control {
+            width: 100%;
+            background-color: var(--bg-primary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 16px;
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-orange);
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 107, 0, 0.15);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 450px;
+            background-color: var(--bg-secondary);
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .map-placeholder-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(15,17,21,0.4), rgba(15,17,21,0.4));
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Responsive structural overwrites for contact page grid layout */
+        @media (max-width: 1200px) {
+            .contact-layout-split { display: block; }
+            .contact-sidebar, .contact-form-wrapper { display: block; width: 100%; padding: 0; }
+            .contact-sidebar { margin-bottom: 60px; }
+            .form-row { display: block; }
+            .form-col { display: block; width: 100%; padding: 0; margin-bottom: 25px; }
+            .form-row .form-col:last-child { margin-bottom: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="scroll-progress"></div>
+
+    <div id="preloader">
+        <div class="preloader-center-wrapper">
+            <div class="spinner"></div>
+            <div class="preloader-text">Kamala Engineering Works</div>
+        </div>
+    </div>
+
+    <header id="main-header">
+        <div class="container nav-wrapper">
+            <a href="../index.html" class="logo-text">KAMALA<span>ENGINEERING WORKS</span></a>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About Profile</a></li>
+                    <li><a href="products.html">Product Catalogue</a></li>
+                    <li><a href="custom-manufacturing.html">Custom Manufacturing</a></li>
+                    <li><a href="gallery.html">Infrastructure Gallery</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cta">
+                <a href="request-quote.html" class="btn btn-nav-quote">Request Quote</a>
+                <div class="mobile-toggle" id="mobile-menu-trigger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="contact-hero">
+        <div class="container">
+            <div class="reveal-up">
+                <span class="section-subtitle">Plant Hub Communications</span>
+                <h1 style="font-size: 3.5rem; margin-bottom: 0;">Contact Engineering <span>Office</span></h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-main-section">
+        <div class="container">
+            <div class="contact-layout-split">
+                
+                <div class="contact-sidebar reveal-left">
+                    <span class="section-subtitle">Plant Infrastructure Location</span>
+                    <h2 class="section-title" style="font-size: 2.2rem; margin-bottom: 30px;">Direct Routing <span>Parameters</span></h2>
+                    <p style="margin-bottom: 40px;">For logistical coordination, container routing schedules, raw metallurgical supply updates, or formal operational factory floor inspections, establish linkage directly with our operations room.</p>
+                    
+                    <div class="contact-card-item">
+                        <h3>Registered Manufacturing Premises</h3>
+                        <p style="color: var(--text-main);">Industrial Manufacturing Zone, Phase II,</p>
+                        <p style="color: var(--text-main);">Tool-Room Hub, Kolkata,</p>
+                        <p style="color: var(--text-main);">West Bengal, Pincode 700001, India</p>
+                    </div>
+
+                    <div class="contact-card-item">
+                        <h3>Operations Window (Business Hours)</h3>
+                        <p><strong>Monday – Saturday:</strong> 08:30 AM – 06:30 PM IST</p>
+                        <p><strong>Plant Floor Night Shift:</strong> Continuous Automated CNC Run Arrays Only</p>
+                        <p><strong>Sunday:</strong> Structural Operations Suspended / Plant Maintenance</p>
+                    </div>
+
+                    <div class="contact-card-item">
+                        <h3>Direct Communication Matrix</h3>
+                        <p><strong>Procurement Hotline:</strong> +91-XXXXXXXXXX</p>
+                        <p><strong>Commercial Estimating Desk:</strong> +91-XXXXXXXXXX</p>
+                        <p><strong>Secure Inbound Email:</strong> sales@kamalaengineering.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper reveal-right">
+                    <span class="section-subtitle">Inquiry Routing Console</span>
+                    <h2 class="section-title" style="font-size: 2.2rem; margin-bottom: 35px;">Submit Commercial <span>Inquiry</span></h2>
+                    
+                    <form id="plant-inquiry-form" onsubmit="event.preventDefault(); alert('B2B ROUTING MESSAGE:\nFor submitting high-tolerance drawing files (STEP, STP, DWG, DXF) alongside extensive parameter documentation, utilize the dedicated Request Quote module at pages/request-quote.html.');">
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="contact-name">Authorized Officer Name</label>
+                                    <input type="text" id="contact-name" class="form-control" placeholder="e.g. Rajesh Kumar" required>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="contact-company">Enterprise / Corporate Entity</label>
+                                    <input type="text" id="contact-company" class="form-control" placeholder="e.g. Tata Steel Plant Division" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="contact-email">Corporate Email Address</label>
+                                    <input type="email" id="contact-email" class="form-control" placeholder="name@company.com" required>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="contact-phone">Direct Contact / Mobile Bar</label>
+                                    <input type="tel" id="contact-phone" class="form-control" placeholder="+91 XXXXX XXXXX" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-dept">Target Internal Department</label>
+                            <select id="contact-dept" class="form-control" style="background-color: var(--bg-primary);">
+                                <option value="estimating">Commercial Contract Estimating / RFQ Desk</option>
+                                <option value="metallurgy">Metallurgical Validation & Testing Lab</option>
+                                <option value="logistics">Inbound Raw Material / Outbound Logistics Hub</option>
+                                <option value="management">Executive Plant Management / Administration</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-msg">Technical Specifications / Scope Outline Summary</label>
+                            <textarea id="contact-msg" class="form-control" placeholder="Specify volumetric requirements, tolerance standards (ISO/DIN), required material alloy variations, or assembly context outlines..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn" style="width: 100%;">Transmit Parameters to Plant Desk</button>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="map-container reveal-up">
+                <div class="map-placeholder-overlay">
+                    <h3 style="font-family: var(--font-nav); font-size: 1.2rem; letter-spacing: 1px; margin-bottom: 10px;">GEOLOCATION SATELLITE PLACEMENT NODE</h3>
+                    <p style="max-width: 500px; font-size: 0.85rem; margin-bottom: 25px;">[Production Frame Ready for Integration of Live Client GIS Mapping Iframe Code Block without Style Dependencies]</p>
+                    <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn btn-secondary" style="font-size: 0.75rem; padding: 10px 20px;">Open Standalone Route Coordinates</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" style="padding: 0;">
+        <div class="cta-banner">
+            <div class="container reveal-up">
+                <h2>Looking to Submit Blueprint CAD Formats Immediately?</h2>
+                <p>Skip standard routing arrays entirely. Access our direct file parsing vault to forward multi-gigabit technical document criteria packs directly into our estimation system pipelines.</p>
+                <div class="cta-button-group">
+                    <a href="request-quote.html" class="btn">Route to Blueprint Submission Vault</a>
+                    <a href="https://wa.me/91XXXXXXXXXX" class="btn btn-whatsapp" target="_blank" rel="noopener">Broadcast to Plant WhatsApp Loop</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4 class="footer-logo">KAMALA<span>ENGINEERING WORKS</span></h4>
+                <p>Premium dark-tier heavy enterprise tier manufacturing specialists. Producing mission critical mechanical hardware configurations across high-load processing plants globally with zero precision compromises.</p>
+                <p class="footer-highlight">ISO 9001:2015 Structural Manufacturing Certified Plant Facility</p>
+            </div>
+            <div class="footer-col">
+                <h4>Component Matrices</h4>
+                <ul class="footer-links">
+                    <li><a href="products.html">Machine Spare Parts</a></li>
+                    <li><a href="products.html">Industrial Shaft Systems</a></li>
+                    <li><a href="products.html">Precision Transmission Gears</a></li>
+                    <li><a href="products.html">Bronze Sleeves & Bushes</a></li>
+                    <li><a href="products.html">Heavy Structural Weldments</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Site Structure</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Corporate Profile</a></li>
+                    <li><a href="custom-manufacturing.html">Machinery Capability Mapping</a></li>
+                    <li><a href="gallery.html">Infrastructure Vault</a></li>
+                    <li><a href="request-quote.html">Submit Design RFQ</a></li>
+                    <li><a href="contact.html">Contact Engineering Office</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Registered Plant Office</h4>
+                <ul class="contact-info-list">
+                    <li>
+                        <span>&#128204;</span>
+                        <div><strong>Factory Floor Premises:</strong> Industrial Manufacturing Zone, Phase II, Tool-Room Hub, Kolkata, West Bengal, Pin 700001, India</div>
+                    </li>
+                    <li>
+                        <span>&#128222;</span>
+                        <div><strong>Procurement Hotline:</strong> +91-XXXXXXXXXX / +91-XXXXXXXXXX</div>
+                    </li>
+                    <li>
+                        <span>&#128231;</span>
+                        <div><strong>Secure B2B Inquiries:</strong> tender@kamalaengineering.com / sales@kamalaengineering.com</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Kamala Engineering Works. All Engineering Blueprints and Hardware Layout Property Protected. Handcrafted with zero external UI framework dependencies.</p>
+            <div class="legal-links">
+                <a href="privacy-policy.html">Data Security & NDA Privacy Policy</a>
+                <a href="privacy-policy.html">Terms of Manufacturing Specification Agreements</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
