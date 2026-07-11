@@ -1,0 +1,36 @@
+backend:
+  name: git-gateway
+  branch: main # Agar tumhara default branch 'master' hai, toh yahan 'master' kar dena
+
+media_folder: "assets/images"
+public_folder: "../assets/images"
+
+collections:
+  - name: "catalog_settings"
+    label: "Inventory Matrix Manager"
+    delete: false
+    files:
+      - name: "products_list"
+        label: "Master Product Inventory Database"
+        file: "pages/products.json" # Make sure ye path tumhare repo me sahi ho
+        format: "json"
+        fields:
+          - name: "products"
+            label: "Product Array Inventory"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { name: "id", label: "Unique Code ID (e.g., spur-gear-01)", widget: "string" }
+              - { name: "category", label: "Filtering Category Group", widget: "string" }
+              - { name: "title", label: "Product Name Header", widget: "string" }
+              - { name: "badge", label: "Operational Division Badge Text", widget: "string" }
+              - { name: "image", label: "Component Visual Photo", widget: "image" }
+              - { name: "short_desc", label: "Short Catalog Summary Snippet", widget: "text" }
+              - name: "specs"
+                label: "Technical Structural Specifications"
+                widget: "object"
+                fields:
+                  - { name: "Material", label: "Material Profiling", widget: "string" }
+                  - { name: "Dimensions", label: "Dimensional Sizing Scale", widget: "string" }
+                  - { name: "Thickness", label: "Thickness / Module Bounds", widget: "string" }
+                  - { name: "Standard", label: "Geometric Compliance Standards", widget: "string" }
