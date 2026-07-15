@@ -105,7 +105,7 @@
         const ADMIN_PASSWORD = "Kew_v2@2006"; 
 
         // Initialize Supabase Connection
-        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const supabase = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         // Simple Client-Side Password Auth
         function checkPassword() {
