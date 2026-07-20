@@ -104,8 +104,10 @@
         const IMGBB_API_KEY = "de5df487c2515abb17e39bced8cf0f10";
         const ADMIN_PASSWORD = "Kew_v2@2006"; 
 
-        // Initialize Supabase Connection Safely
-        const sbClient = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        // Safe Client Getter Function (Prevents lexical scope errors)
+        function getSupabase() {
+            return Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        }
 
         // Simple Client-Side Password Auth
         function checkPassword() {
@@ -168,7 +170,8 @@
                     standard: document.getElementById('standard').value.trim()
                 };
 
-                const { error } = await sbClient.from('products').insert([productPayload]);
+                const client = getSupabase();
+                const { error } = await client.from('products').insert([productPayload]);
 
                 if (error) throw error;
 
