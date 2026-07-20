@@ -16,7 +16,7 @@
         <div class="bg-gray-900 p-8 rounded-lg shadow-2xl border border-gray-800 max-w-sm w-full text-center">
             <h2 class="text-xl font-bold mb-2 text-orange-500">KEW Catalog Admin</h2>
             <p class="text-gray-400 text-sm mb-6">Restricted Access Panel</p>
-            <input type="password" id="admin-password" placeholder="Enter Admin Password" class="w-full p-2 mb-4 bg-gray-800 border border-gray-700 rounded text-center focus:outline-none focus:border-orange-500">
+            <input type="password" id="admin-password" placeholder="Enter Admin Password" class="w-full p-2 mb-4 bg-gray-800 border border-gray-700 rounded text-center focus:outline-none focus:border-orange-500 text-white">
             <button onclick="checkPassword()" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded transition">Login</button>
             <p id="error-msg" class="text-red-500 text-sm mt-3 hidden">Incorrect Password! Access Denied.</p>
         </div>
@@ -73,19 +73,19 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label class="block text-xs font-semibold text-gray-400 mb-1">Material Profiling</label>
-                    <input type="text" id="material" placeholder="e.g. EN24 forged carbon steel alloy" class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-orange-500">
+                    <input type="text" id="material" placeholder="e.g. EN24 forged carbon steel alloy" class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-orange-500 text-white">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-gray-400 mb-1">Dimensional Sizing Scale</label>
-                    <input type="text" id="dimensions" placeholder="e.g. Diameters up to Ø 500 mm" class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-orange-500">
+                    <input type="text" id="dimensions" placeholder="e.g. Diameters up to Ø 500 mm" class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-orange-500 text-white">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-gray-400 mb-1">Thickness / Module Bounds</label>
-                    <input type="text" id="thickness" placeholder="e.g. Modules from 1.5 to 12 Module" class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-orange-500">
+                    <input type="text" id="thickness" placeholder="e.g. Modules from 1.5 to 12 Module" class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-orange-500 text-white">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-gray-400 mb-1">Geometric Compliance Standards</label>
-                    <input type="text" id="standard" placeholder="e.g. AGMA Class 9 / DIN 7 compliance" class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-orange-500">
+                    <input type="text" id="standard" placeholder="e.g. AGMA Class 9 / DIN 7 compliance" class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-orange-500 text-white">
                 </div>
             </div>
 
@@ -97,15 +97,15 @@
 
     <script>
         // ==========================================
-        // CONFIGURATION PARAMETERS (Setup Credentials Here)
+        // CONFIGURATION PARAMETERS
         // ==========================================
         const SUPABASE_URL = "https://sriirikxnwjdyoebrtex.supabase.co"; 
         const SUPABASE_ANON_KEY = "sb_publishable_rIRT7hFR0vJdJbhYHUgjGQ_A3SKTAQi";
         const IMGBB_API_KEY = "de5df487c2515abb17e39bced8cf0f10";
         const ADMIN_PASSWORD = "Kew_v2@2006"; 
 
-        // Initialize Supabase Connection
-        const supabase = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        // Initialize Supabase Connection Safely
+        const sbClient = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         // Simple Client-Side Password Auth
         function checkPassword() {
@@ -147,7 +147,7 @@
                     
                     const imgData = await response.json();
                     if (imgData.success) {
-                        imageUrl = imgData.data.url; // Native static CDN url mapping
+                        imageUrl = imgData.data.url; 
                     } else {
                         throw new Error("Cloud image host rejected upload request.");
                     }
@@ -168,7 +168,7 @@
                     standard: document.getElementById('standard').value.trim()
                 };
 
-                const { error } = await supabase.from('products').insert([productPayload]);
+                const { error } = await sbClient.from('products').insert([productPayload]);
 
                 if (error) throw error;
 
