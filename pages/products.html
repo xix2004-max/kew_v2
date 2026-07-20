@@ -72,7 +72,7 @@
         const SUPABASE_ANON_KEY = "sb_publishable_rIRT7hFR0vJdJbhYHUgjgQ_A3SKTAQi";
 
         // Initialize Supabase Connection
-        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         let localProducts = []; // Stores products locally once downloaded
 
