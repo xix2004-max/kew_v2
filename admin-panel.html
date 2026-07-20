@@ -97,6 +97,203 @@
 
     <script>
         // ==========================================
+        // CONFIGURATION PARAMETERS (Safe window globals)
+        // ==========================================
+        window.SUPABASE_URL = "https://sriirikxnwjdyoebrtex.supabase.co"; 
+        window.SUPABASE_ANON_KEY = "sb_publishable_rIRT7hFR0vJdJbhYHUgjGQ_A3SKTAQi";
+        window.IMGBB_API_KEY = "de5df487c2515abb17e39bced8cf0f10";
+        window.ADMIN_PASSWORD = "2006"; 
+
+        // Safe Client Getter
+        function getSupabase() {
+            return window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+        }
+
+        // Simple Client-Side Password Auth
+        function checkPassword() {
+            const passwordInput = document.getElementById('admin-password');
+            const errorMsg = document.getElementById('error-msg');
+            
+            if (passwordInput.value === window.ADMIN_PASSWORD) {
+                errorMsg.classList.add('hidden');
+                document.getElementById('password-overlay').classList.add('hidden');
+                document.getElementById('admin-content').classList.remove('hidden');
+            } else {
+                errorMsg.classList.remove('hidden');
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        }
+
+        // Handle Enter key on password field
+        document.getElementById('admin-password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        // Form Process Handler
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            btn.disabled = true;
+            btn.innerText = "Processing Cloud Upload...";
+
+            try {
+                // 1. Process Image Upload via Imgbb API
+                const fileInput = document.getElementById('image-file');
+                const file = fileInput.files[0];
+                let imageUrl = "";
+
+                if (file) {
+                    const formData = new FormData();
+                    formData.append("image", file);
+
+                    const response = await fetch(`https://api.imgbb.com/1/upload?key=${window.IMGBB_API_KEY}`, {
+                        method: "POST",
+                        body: formData
+                    });
+                    
+                    const imgData = await response.json();
+                    if (imgData.success) {
+                        imageUrl = imgData.data.url; 
+                    } else {
+                        throw new Error("Cloud image host rejected upload request.");
+                    }
+                }
+
+                // 2. Transmit Form Schema Fields to Supabase Storage Engine
+                const productPayload = {
+                    id: document.getElementById('id').value.trim(),
+                    category: document.getElementById('category').value.trim().toLowerCase(),
+                    title: document.getElementById('title').value.trim(),
+                    badge: document.getElementById('badge').value.trim(),
+                    image: imageUrl,
+                    short_desc: document.getElementById('short_desc').value.trim(),
+                    description: document.getElementById('description').value.trim(),
+                    material: document.getElementById('material').value.trim(),
+                    dimensions: document.getElementById('dimensions').value.trim(),
+                    thickness: document.getElementById('thickness').value.trim(),
+                    standard: document.getElementById('standard').value.trim()
+                };
+
+                const client = getSupabase();
+                const { error } = await client.from('products').insert([productPayload]);
+
+                if (error) throw error;
+
+                alert("Success! Product is now deployed live on the catalog database.");
+                document.getElementById('product-form').reset();
+
+            } catch (err) {
+                console.error(err);
+                alert("Execution Interrupted: " + err.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "Publish Product to Live Website";
+            }
+        }
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Catalog Manager | Kamala Engineering Works</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Supabase Client JS (UMD Bundle) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex items-center justify-center p-4 font-sans">
+
+    <!-- Password Protection Overlay -->
+    <div id="password-overlay" class="fixed inset-0 bg-gray-950 flex flex-col items-center justify-center z-50">
+        <div class="bg-gray-900 p-8 rounded-lg shadow-2xl border border-gray-800 max-w-sm w-full text-center">
+            <h2 class="text-xl font-bold mb-2 text-orange-500">KEW Catalog Admin</h2>
+            <p class="text-gray-400 text-sm mb-6">Restricted Access Panel</p>
+            <input type="password" id="admin-password" placeholder="Enter Admin Password" class="w-full p-2 mb-4 bg-gray-800 border border-gray-700 rounded text-center focus:outline-none focus:border-orange-500 text-white">
+            <button onclick="checkPassword()" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded transition">Login</button>
+            <p id="error-msg" class="text-red-500 text-sm mt-3 hidden">Incorrect Password! Access Denied.</p>
+        </div>
+    </div>
+
+    <!-- Main Admin Form -->
+    <div id="admin-content" class="w-full max-w-2xl bg-gray-800 p-8 rounded-lg shadow-2xl border border-gray-700 hidden my-8">
+        <div class="flex justify-between items-center border-b border-gray-700 pb-4 mb-6">
+            <h1 class="text-2xl font-bold text-orange-500">Add New Product to Catalog</h1>
+            <button onclick="location.reload()" class="text-sm bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded text-gray-300">Lock Panel</button>
+        </div>
+        
+        <form id="product-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-semibold mb-1 text-gray-300">Unique Product ID (e.g. spur-gear-02)</label>
+                    <input type="text" id="id" required placeholder="spur-gear-02" class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:border-orange-500 text-white focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold mb-1 text-gray-300">Category</label>
+                    <input type="text" id="category" required placeholder="gears, shafts, bushes, spareparts" class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:border-orange-500 text-white focus:outline-none">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-semibold mb-1 text-gray-300">Product Title</label>
+                    <input type="text" id="title" required placeholder="Precision Hardened Spur Gears" class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:border-orange-500 text-white focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold mb-1 text-gray-300">Badge Text</label>
+                    <input type="text" id="badge" placeholder="Transmission Systems" class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:border-orange-500 text-white focus:outline-none">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold mb-1 text-gray-300">Short Catalog Summary Snippet</label>
+                <input type="text" id="short_desc" required placeholder="Brief one-liner summary for catalog view grids..." class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:border-orange-500 text-white focus:outline-none">
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold mb-1 text-gray-300">Detailed Product Description</label>
+                <textarea id="description" rows="4" placeholder="Deep descriptive features, engineering capabilities, application details..." class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:border-orange-500 text-white focus:outline-none"></textarea>
+            </div>
+
+            <!-- Image Upload Box -->
+            <div class="border-2 border-dashed border-gray-600 rounded-lg p-6 text-center bg-gray-850 hover:border-orange-500 transition">
+                <label class="block text-sm font-semibold mb-2 text-gray-300">Component Visual Photo</label>
+                <input type="file" id="image-file" accept="image/*" required class="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-600 file:text-white hover:file:bg-orange-700 cursor-pointer">
+                <p class="text-xs text-gray-500 mt-2">Images are optimized and saved automatically to the cloud host.</p>
+            </div>
+
+            <h3 class="text-md font-bold text-gray-400 border-b border-gray-700 pb-1 mt-6">Technical Structural Specifications (Optional)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 mb-1">Material Profiling</label>
+                    <input type="text" id="material" placeholder="e.g. EN24 forged carbon steel alloy" class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-orange-500 text-white">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 mb-1">Dimensional Sizing Scale</label>
+                    <input type="text" id="dimensions" placeholder="e.g. Diameters up to Ø 500 mm" class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-orange-500 text-white">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 mb-1">Thickness / Module Bounds</label>
+                    <input type="text" id="thickness" placeholder="e.g. Modules from 1.5 to 12 Module" class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-orange-500 text-white">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 mb-1">Geometric Compliance Standards</label>
+                    <input type="text" id="standard" placeholder="e.g. AGMA Class 9 / DIN 7 compliance" class="w-full p-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-orange-500 text-white">
+                </div>
+            </div>
+
+            <button type="submit" id="submit-btn" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-4 rounded transition mt-6 tracking-wide shadow-lg">
+                Publish Product to Live Website
+            </button>
+        </form>
+    </div>
+
+    <script>
+        // ==========================================
         // CONFIGURATION PARAMETERS
         // ==========================================
         const SUPABASE_URL = "https://sriirikxnwjdyoebrtex.supabase.co"; 
